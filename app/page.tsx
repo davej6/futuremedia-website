@@ -4,10 +4,10 @@ import { useState, useEffect, useRef } from 'react'
 // ─── BRAND TOKENS ───────────────────────────────────────────────
 const B  = '#3b82f6'   // electric blue
 const P  = '#7c3aed'   // purple
-const BG = '#04081a'   // deep space
-const C  = 'rgba(255,255,255,0.03)'  // card bg
-const E  = 'rgba(59,130,246,0.14)'   // border
-const M  = '#64748b'   // muted
+const BG = '#0a0a0f'   // deep space
+const C  = '#13131e'   // card bg
+const E  = 'rgba(59,130,246,0.2)'    // border
+const M  = '#a0a0b0'   // muted
 
 // ─── DATA ───────────────────────────────────────────────────────
 const TESTIMONIALS = [
@@ -23,40 +23,40 @@ const SERVICES = [
   { icon: '🌐', title: 'Custom Website Design', sub: 'From $499', desc: 'Mobile-first, lightning-fast websites built to rank on Google and turn visitors into customers. Every site is built from scratch for your specific business.' },
   { icon: '📈', title: 'Local SEO & Google Rankings', sub: 'Included Free', desc: 'We optimize your site so you show up when people search "plumber near me" or "electrician in [your city]". Own your local market.' },
   { icon: '⭐', title: 'Google Reviews Growth', sub: 'Included Free', desc: 'We set up systems that automatically collect more 5-star reviews — making your business the obvious choice over competitors.' },
-  { icon: '🔧', title: 'Hosting & Maintenance', sub: '$79/mo', desc: 'We handle everything. Hosting, updates, security, SSL, and support. You focus on your trade, we handle your web presence.' },
+  { icon: '🔧', title: 'Hosting & Maintenance', sub: '1 Year Free', desc: 'First year of hosting included free with every package. Fast, secure, and fully managed so you never have to think about it.' },
 ]
 
 const STEPS = [
   { n: '01', title: 'Get a Free Mockup',   desc: 'We design a real visual mockup of your website for free. No commitment, no credit card, no risk.' },
-  { n: '02', title: 'We Build It Fast',    desc: 'Once you approve, our team builds your site in 7–14 days. Professional, fast, and done right the first time.' },
+  { n: '02', title: 'We Build It Fast',    desc: 'Once you approve, our team builds your site in 3-5 days. Professional, fast, and done right the first time.' },
   { n: '03', title: 'Your Phone Rings',    desc: 'Your site goes live, ranks on Google, and customers start calling. That\'s the whole point.' },
 ]
 
 const PRICING = [
   {
     name: 'Starter', price: '$499', sub: 'one-time payment',
-    features: ['Custom 5-page website', 'Mobile responsive design', 'Google Maps integration', 'Contact form + click-to-call', 'Basic on-page SEO', '1 revision round', '14-day delivery'],
+    features: ['Custom 5-page website', 'Mobile responsive design', 'Google Maps integration', 'Contact form + click-to-call', 'Basic on-page SEO', '1 revision round', '3-5 day delivery'],
     cta: 'Get Started', hot: false,
   },
   {
     name: 'Pro', price: '$999', sub: 'one-time payment', badge: 'Most Popular',
-    features: ['Custom 8-page website', 'Full local SEO setup', 'Google Business optimization', 'Review collection system', 'Speed optimization', '3 revision rounds', '30-day post-launch support'],
+    features: ['Custom 8-page website', 'Full local SEO setup', 'Google Business optimization', 'Review collection system', 'Speed optimization', '3 revision rounds', '5-7 day delivery', '30-day post-launch support'],
     cta: 'Get Free Mockup', hot: true,
   },
   {
     name: 'Elite', price: '$1,999', sub: 'one-time payment',
-    features: ['Custom 15+ page website', 'Advanced SEO + blog setup', 'Monthly content updates', 'Google Ads campaign setup', 'Analytics dashboard', 'Unlimited revisions', '90-day priority support'],
+    features: ['Custom 15+ page website', 'Advanced SEO + blog setup', 'Regular content updates included', 'Google Ads campaign setup', 'Analytics dashboard', 'Unlimited revisions', '90-day priority support'],
     cta: "Let's Talk", hot: false,
   },
 ]
 
 const FAQS = [
-  { q: 'How long does it take?',             a: 'Most websites are live in 7–14 days. We work fast because we know your time is money.' },
+  { q: 'How long does it take?',             a: 'Most websites are live in 3-5 days. We work fast because we know your time is money.' },
   { q: 'What\'s this "free mockup" thing?',  a: 'Before you pay a single dollar, we build you a real visual mockup of your website. You approve it, then we build it. Zero risk.' },
   { q: 'Do I own my website?',               a: '100% yes. You own the domain, the content, and all the code. We build it for you and hand over the keys.' },
   { q: 'Will I rank on Google?',             a: 'That\'s the whole point. Every site we build includes local SEO so you rank when people in your city search for your service.' },
-  { q: 'I\'m not tech-savvy — is that ok?', a: 'Completely fine. You don\'t touch a thing. We handle all updates, hosting, and maintenance. Just call us when you need a change.' },
-  { q: 'How much does hosting cost?',        a: 'Our hosting + maintenance plan is $79/month and covers everything — hosting, SSL, updates, backups, and support.' },
+  { q: 'Is that ok if I\'m not tech-savvy?', a: 'Completely fine. You don\'t touch a thing. We handle all updates, hosting, and maintenance. Just reach out when you need a change.' },
+  { q: 'Are there any monthly fees?',        a: 'No monthly fees ever. All packages are one-time payments. You own your site outright. The only optional recurring cost is hosting after year one, which you can handle yourself or we can manage for a small flat fee.' },
 ]
 
 const PROBLEMS = [
@@ -64,7 +64,7 @@ const PROBLEMS = [
   { bad: true,  text: 'No way to show off your Google Reviews online' },
   { bad: true,  text: 'Customers can\'t find your phone number after hours' },
   { bad: true,  text: 'Competitors with basic sites are outranking and outearning you' },
-  { bad: false, text: 'Future Media fixes ALL of this — guaranteed' },
+  { bad: false, text: 'Future Media fixes ALL of this, guaranteed' },
 ]
 
 // ─── HELPERS ────────────────────────────────────────────────────
@@ -115,7 +115,7 @@ function Navbar() {
     <nav style={{
       position: 'fixed', top: 0, left: 0, right: 0, zIndex: 200,
       height: 64,
-      background: scrolled ? 'rgba(4,8,26,0.96)' : 'rgba(4,8,26,0.6)',
+      background: scrolled ? 'rgba(10,10,15,0.97)' : 'rgba(10,10,15,0.6)',
       backdropFilter: 'blur(16px)',
       borderBottom: `1px solid ${scrolled ? E : 'transparent'}`,
       transition: 'all 0.3s',
@@ -123,12 +123,8 @@ function Navbar() {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     }}>
       {/* Logo */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10 }}>
-        <div style={{ width: 38, height: 38, borderRadius: '50%', background: `linear-gradient(135deg,#1e3a8a,${P})`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 13, color: '#fff', boxShadow: `0 0 16px ${B}50`, flexShrink: 0 }}>FM</div>
-        <div>
-          <div style={{ fontWeight: 900, fontSize: 14, letterSpacing: 1.5, color: '#fff' }}>FUTURE MEDIA</div>
-          <div style={{ fontSize: 9, color: M, letterSpacing: 2.5, textTransform: 'uppercase' }}>Web Design Studio</div>
-        </div>
+      <div style={{ display: 'flex', alignItems: 'center' }}>
+        <img src="/logo.jpg" alt="Future Media" style={{ height: '48px', width: 'auto' }} />
       </div>
       {/* Links + CTA */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
@@ -168,7 +164,7 @@ function Hero() {
         </h1>
 
         <p style={{ fontSize: 'clamp(16px,2vw,20px)', color: '#94a3b8', maxWidth: 660, margin: '0 auto 44px', lineHeight: 1.75 }}>
-          You've built a great local business through hard work and reputation. But without a website, Google sends every customer straight to your competition. <strong style={{ color: '#cbd5e1' }}>We fix that — with a free mockup first.</strong>
+          You've built a great local business through hard work and reputation. But without a website, Google sends every customer straight to your competition. <strong style={{ color: '#cbd5e1' }}>We fix that with a free mockup first.</strong>
         </p>
 
         {/* CTAs */}
@@ -183,7 +179,7 @@ function Hero() {
 
         {/* Stats */}
         <div style={{ display: 'flex', gap: 0, justifyContent: 'center', flexWrap: 'wrap' }}>
-          {[['50+','Michigan Businesses Served'],['4.9 ★','Average Client Rating'],['7 Days','Average Launch Time'],['$0','Cost to See Your Mockup']].map(([n, l], i) => (
+          {[['50+','Michigan Businesses Served'],['4.9 ★','Average Client Rating'],['3-5 Days','Average Launch Time'],['$0','Cost to See Your Mockup']].map(([n, l], i) => (
             <div key={l} style={{ padding: '0 28px', borderRight: i < 3 ? `1px solid ${E}` : 'none', textAlign: 'center' }}>
               <div style={{ fontSize: 26, fontWeight: 900, color: '#fff', lineHeight: 1 }}>{n}</div>
               <div style={{ fontSize: 11, color: M, marginTop: 5, letterSpacing: 0.5 }}>{l}</div>
@@ -199,7 +195,7 @@ function Hero() {
 function TrustStrip() {
   const trades = ['Plumbers','Electricians','HVAC Contractors','Roofers','Auto Repair','Landscapers','General Contractors','Towing Companies','Welding Shops','Painters']
   return (
-    <div style={{ background: 'rgba(255,255,255,0.015)', borderTop: `1px solid ${E}`, borderBottom: `1px solid ${E}`, padding: '18px 24px', overflow: 'hidden' }}>
+    <div style={{ background: '#0d0d14', borderTop: `1px solid ${E}`, borderBottom: `1px solid ${E}`, padding: '18px 24px', overflow: 'hidden' }}>
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 32, flexWrap: 'wrap' }}>
         <span style={{ color: M, fontSize: 12, fontWeight: 700, textTransform: 'uppercase', letterSpacing: 2, flexShrink: 0 }}>We work with:</span>
         {trades.map(t => <span key={t} style={{ color: '#334155', fontSize: 13, fontWeight: 500, whiteSpace: 'nowrap' }}>{t}</span>)}
@@ -243,7 +239,7 @@ function Problem() {
 // ─── SERVICES ────────────────────────────────────────────────────
 function Services() {
   return (
-    <section id="services" style={{ padding: '80px 24px', background: 'rgba(255,255,255,0.012)' }}>
+    <section id="services" style={{ padding: '80px 24px', background: '#0d0d14' }}>
       <div style={{ maxWidth: 1120, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <SectionLabel>What We Do</SectionLabel>
@@ -296,7 +292,7 @@ function HowItWorks() {
 // ─── TESTIMONIALS ────────────────────────────────────────────────
 function Testimonials() {
   return (
-    <section id="reviews" style={{ padding: '100px 24px', background: 'rgba(255,255,255,0.012)' }}>
+    <section id="reviews" style={{ padding: '100px 24px', background: '#111118' }}>
       <div style={{ maxWidth: 1120, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 56 }}>
           <SectionLabel>Real Results</SectionLabel>
@@ -466,17 +462,13 @@ function Contact() {
 // ─── FOOTER ──────────────────────────────────────────────────────
 function Footer() {
   return (
-    <footer style={{ borderTop: `1px solid ${E}`, padding: '48px 24px 32px', background: 'rgba(0,0,0,0.2)' }}>
+    <footer style={{ borderTop: `1px solid ${E}`, padding: '48px 24px 32px', background: '#060608' }}>
       <div style={{ maxWidth: 1120, margin: '0 auto' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: 32, marginBottom: 40 }}>
           {/* Brand */}
           <div style={{ maxWidth: 280 }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginBottom: 14 }}>
-              <div style={{ width: 36, height: 36, borderRadius: '50%', background: `linear-gradient(135deg,#1e3a8a,${P})`, display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 900, fontSize: 12, color: '#fff' }}>FM</div>
-              <div>
-                <div style={{ fontWeight: 900, fontSize: 13, letterSpacing: 1.5, color: '#fff' }}>FUTURE MEDIA</div>
-                <div style={{ fontSize: 9, color: M, letterSpacing: 2, textTransform: 'uppercase' }}>Web Design Studio</div>
-              </div>
+            <div style={{ marginBottom: 14 }}>
+              <img src="/logo.jpg" alt="Future Media" style={{ height: '48px', width: 'auto' }} />
             </div>
             <p style={{ color: M, fontSize: 13, lineHeight: 1.7 }}>Michigan's web design studio for local tradespeople and small businesses. We build sites that rank and convert.</p>
           </div>
@@ -500,7 +492,7 @@ function Footer() {
           </div>
         </div>
         <div style={{ borderTop: `1px solid ${E}`, paddingTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <p style={{ color: '#1e293b', fontSize: 13, margin: 0 }}>© 2025 Future Media Web Design Studio. All rights reserved.</p>
+          <p style={{ color: '#a0a0b0', fontSize: 13, margin: 0 }}>© 2025 Future Media Web Design Studio. All rights reserved.</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             <Stars />
             <span style={{ color: M, fontSize: 12 }}>4.9/5 from 50+ Michigan businesses</span>

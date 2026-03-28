@@ -4,15 +4,15 @@ html { scroll-behavior: smooth; }
 
 body {
   font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
-  background: #04081a;
-  color: #e2e8f0;
+  background: #0a0a0f;
+  color: #ffffff;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 input, textarea, button { font-family: inherit; }
 
-input::placeholder { color: #334155; }
+input::placeholder { color: #4a4a6a; }
 
 a { transition: opacity 0.15s; }
 a:hover { opacity: 0.85; }
@@ -68,5 +68,5 @@ input:focus {
 
 /* Scrollbar */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #04081a; }
-::-webkit-scrollbar-thumb { background: #1e3a8a; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #0a0a0f; }
+::-webkit-scrollbar-thumb { background: #1a3aaf; border-radius: 3px; }
