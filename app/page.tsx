@@ -14,23 +14,23 @@ const M   = '#94a3b8'    // muted text
 // ─── DATA ────────────────────────────────────────────────────────
 const TESTIMONIALS = [
   { init: 'M', name: 'Mike T.',  biz: 'Detroit Plumbing Pro',     city: 'Detroit',          result: '12 new calls/month', text: 'Sam built us a site in one week. First month we got 12 new calls from Google alone. Paid for itself 10x over. Wish I did this years ago.' },
-  { init: 'R', name: 'Rick S.',  biz: 'S&S Electric',             city: 'Sterling Heights',  result: '40% more leads',     text: 'I was skeptical. Now our phone hasn\'t stopped ringing since launch. Best investment I made all year — and I\'ve been in business 18 years.' },
+  { init: 'R', name: 'Rick S.',  biz: 'S&S Electric',             city: 'Sterling Heights',  result: '40% more leads',     text: 'I was skeptical. Now our phone hasn\'t stopped ringing since launch. Best investment I made all year. I\'ve been in business 18 years.' },
   { init: 'J', name: 'Josh M.',  biz: 'Metro HVAC',               city: 'Warren',            result: '#2 Google ranking', text: 'The free mockup sold me. No pushy sales pitch, just results. We rank #2 on Google for "HVAC Warren" now. Competitors with older sites are below us.' },
   { init: 'D', name: 'Dave K.',  biz: 'K&K Roofing',              city: 'Livonia',           result: 'Outranking 5 yr olds', text: 'Competitors had websites for years on us. We launched 3 months ago and are already outranking them locally. Sam delivered exactly what he promised.' },
-  { init: 'T', name: 'Tony B.',  biz: 'B&B Auto Repair',          city: 'Pontiac',           result: '+40% Google calls',  text: 'Google calls up 40% since launch. Customers can actually find us now. I was paying for ads that weren\'t working — this site made ads irrelevant.' },
+  { init: 'T', name: 'Tony B.',  biz: 'B&B Auto Repair',          city: 'Pontiac',           result: '+40% Google calls',  text: 'Google calls up 40% since launch. Customers can actually find us now. I was paying for ads that weren\'t working. This site made them irrelevant.' },
   { init: 'C', name: 'Chris R.', biz: 'Royal Oak Landscaping',    city: 'Royal Oak',         result: '15 new clients/mo', text: 'Answered every question fast, delivered exactly what they promised. Zero BS. Real professionals. The site looks 10x better than I expected.' },
 ]
 
 const SERVICES = [
-  { icon: '⚡', title: 'Custom Website Design', sub: 'From $499 — One-Time', desc: 'Mobile-first, lightning-fast sites built to rank on Google and turn visitors into calls. Every site built from scratch — no templates, no cookie-cutter garbage.' },
+  { icon: '⚡', title: 'Custom Website Design', sub: 'From $499 One-Time', desc: 'Mobile-first, lightning-fast sites built to rank on Google and turn visitors into calls. Every site built from scratch. No templates, no cookie-cutter garbage.' },
   { icon: '📍', title: 'Local SEO & Google Rankings', sub: 'Included Free', desc: 'We optimize your site so you show up when people search "plumber near me" or "electrician in [your city]". Dominate your local market.' },
-  { icon: '⭐', title: 'Google Reviews Growth', sub: 'Included Free', desc: 'Automated systems that collect more 5-star reviews — making you the obvious choice over every competitor in your market.' },
-  { icon: '🔒', title: 'Hosting & Maintenance', sub: '1 Year Free', desc: 'First year of hosting included free with every package. Fast, secure, fully managed. You focus on your trade — we handle your web presence.' },
+  { icon: '⭐', title: 'Google Reviews Growth', sub: 'Included Free', desc: 'Automated systems that collect more 5-star reviews, making you the obvious choice over every competitor in your market.' },
+  { icon: '🔒', title: 'Hosting & Maintenance', sub: '1 Year Free', desc: 'First year of hosting included free with every package. Fast, secure, fully managed. You focus on your trade and we handle your web presence.' },
 ]
 
 const STEPS = [
   { n: '01', title: 'Get a Free Mockup',  desc: 'We design a real visual of your new website for free. No commitment, no credit card, no risk. You see it before paying a dollar.' },
-  { n: '02', title: 'We Build It Fast',   desc: 'Once you approve, our team builds your site in 3-5 days. Professional, fast, and done right the first time — no cutting corners.' },
+  { n: '02', title: 'We Build It Fast',   desc: 'Once you approve, our team builds your site in 3-5 days. Professional, fast, and done right the first time with no cutting corners.' },
   { n: '03', title: 'Your Phone Rings',   desc: 'Your site goes live, ranks on Google, and customers start calling. That\'s the whole point and that\'s what we deliver.' },
 ]
 
@@ -54,11 +54,11 @@ const PRICING = [
 
 const FAQS = [
   { q: 'How long does it take?',               a: 'Most websites are live in 3-5 days. We work fast because we know your time is money. Larger Elite projects run 7-10 days.' },
-  { q: 'What\'s this "free mockup" thing?',    a: 'Before you pay a single dollar, we build you a real visual mockup of your website. You approve it, then we build it. Zero risk — if you don\'t love it, you walk away and owe us nothing.' },
+  { q: 'What\'s this "free mockup" thing?',    a: 'Before you pay a single dollar, we build you a real visual mockup of your website. You approve it, then we build it. Zero risk. If you don\'t love it, you walk away and owe us nothing.' },
   { q: 'Do I own my website?',                 a: '100% yes. You own the domain, the content, and all the code. We build it for you and hand over the keys. It\'s yours forever.' },
   { q: 'Will I rank on Google?',               a: 'That\'s the whole point. Every site we build includes local SEO so you rank when people in your city search for your service. Most clients see rankings within 30-60 days.' },
   { q: 'Is that ok if I\'m not tech-savvy?',   a: 'Completely fine. You don\'t touch a thing. We handle all updates, hosting, and maintenance. Just reach out when you need a change.' },
-  { q: 'Are there any monthly fees?',          a: 'No monthly fees ever. All packages are one-time payments. You own your site outright. The only optional recurring cost is hosting after year one — which you can handle yourself or we can manage for a small flat fee.' },
+  { q: 'Are there any monthly fees?',          a: 'No monthly fees ever. All packages are one-time payments. You own your site outright. The only optional recurring cost is hosting after year one, which you can handle yourself or we can manage for a small flat fee.' },
 ]
 
 const PROBLEMS = [
@@ -69,11 +69,6 @@ const PROBLEMS = [
   { bad: false, text: 'Future Media fixes ALL of this, guaranteed' },
 ]
 
-const PORTFOLIO = [
-  { name: 'Nash Plumbing', type: 'Plumber — Sterling Heights, MI', url: 'nash-plumbing-demo.vercel.app', color: '#e63946', bg: '#0a0a0a' },
-  { name: 'Future Media', type: 'Web Design Studio — Michigan', url: 'futuremedia-website.vercel.app', color: '#3b82f6', bg: '#06070f' },
-  { name: 'Your Business', type: 'Free Mockup — Any Trade', url: 'Get yours free →', color: '#22c55e', bg: '#0a150a', cta: true },
-]
 
 // ─── HELPERS ─────────────────────────────────────────────────────
 function Stars({ size = 14 }: { size?: number }) {
@@ -219,16 +214,6 @@ function Hero() {
           }}>
             <span>⚡</span> Get My FREE Mockup
           </a>
-          <a href="#portfolio" style={{
-            background: 'rgba(255,255,255,0.05)',
-            border: `1px solid ${E2}`,
-            color: '#fff', fontSize: 17, fontWeight: 600,
-            padding: '20px 40px', borderRadius: 14,
-            textDecoration: 'none', display: 'inline-block',
-            backdropFilter: 'blur(8px)',
-          }}>
-            See Our Work ↓
-          </a>
         </div>
 
         {/* Stats */}
@@ -283,10 +268,10 @@ function Problem() {
             and calling your competitor.
           </h2>
           <p style={{ color: '#64748b', lineHeight: 1.9, fontSize: 16, margin: '0 0 20px' }}>
-            You've earned your reputation through years of hard work. But reputation doesn't show up on Google — websites do. Every day without one is customers, jobs, and money walking straight to whoever has a better-looking site.
+            You've earned your reputation through years of hard work. But reputation doesn't show up on Google. Websites do. Every day without one is customers, jobs, and money walking straight to whoever has a better-looking site.
           </p>
           <p style={{ color: '#64748b', lineHeight: 1.9, fontSize: 16 }}>
-            Here's the good news: most of your competitors have terrible websites — or none at all. We build sites that dominate local search and make you the obvious, trusted choice.
+            Here's the good news: most of your competitors have terrible websites or none at all. We build sites that dominate local search and make you the obvious, trusted choice.
           </p>
         </div>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
@@ -342,64 +327,6 @@ function Services() {
   )
 }
 
-// ─── PORTFOLIO ───────────────────────────────────────────────────
-function Portfolio() {
-  return (
-    <section id="portfolio" style={{ padding: '100px 24px', maxWidth: 1160, margin: '0 auto' }}>
-      <div style={{ textAlign: 'center', marginBottom: 56 }}>
-        <Label>Our Work</Label>
-        <h2 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 'clamp(28px,4vw,48px)', fontWeight: 900, color: '#fff', margin: '0 0 14px' }}>
-          Real Sites. Real Results.
-        </h2>
-        <p style={{ color: '#64748b', fontSize: 16 }}>Every site built from scratch. No templates. No recycled designs.</p>
-      </div>
-      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 20 }}>
-        {PORTFOLIO.map((p) => (
-          <GlassCard key={p.name} hot={p.cta} style={{ overflow: 'hidden' }}>
-            {/* Browser chrome mockup */}
-            <div style={{ background: p.bg, padding: '0 0 0', borderRadius: '20px 20px 0 0', overflow: 'hidden' }}>
-              <div style={{ background: 'rgba(255,255,255,0.04)', padding: '12px 16px', display: 'flex', alignItems: 'center', gap: 8, borderBottom: `1px solid ${E2}` }}>
-                <div style={{ display: 'flex', gap: 6 }}>
-                  {['#ff5f57','#febc2e','#28c840'].map(c => <div key={c} style={{ width: 10, height: 10, borderRadius: '50%', background: c }} />)}
-                </div>
-                <div style={{ flex: 1, background: 'rgba(255,255,255,0.06)', borderRadius: 6, padding: '4px 12px', fontSize: 11, color: '#475569', textAlign: 'center' }}>
-                  {p.url}
-                </div>
-              </div>
-              <div style={{ height: 180, background: `linear-gradient(135deg, ${p.bg} 0%, ${p.color}18 100%)`, display: 'flex', alignItems: 'center', justifyContent: 'center', position: 'relative', overflow: 'hidden' }}>
-                <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(${p.color}0a 1px, transparent 1px), linear-gradient(90deg, ${p.color}0a 1px, transparent 1px)`, backgroundSize: '40px 40px' }} />
-                <div style={{ textAlign: 'center', position: 'relative', zIndex: 1 }}>
-                  <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 22, fontWeight: 900, color: p.cta ? '#22c55e' : '#fff', marginBottom: 6 }}>{p.name}</div>
-                  <div style={{ fontSize: 12, color: '#64748b' }}>{p.type}</div>
-                  {p.cta && (
-                    <div style={{ marginTop: 16, background: 'rgba(34,197,94,0.15)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 8, padding: '8px 20px', fontSize: 13, color: '#86efac', fontWeight: 700 }}>
-                      Your site goes here →
-                    </div>
-                  )}
-                </div>
-                {/* Glow */}
-                <div style={{ position: 'absolute', top: '50%', left: '50%', transform: 'translate(-50%,-50%)', width: 200, height: 200, background: `radial-gradient(ellipse, ${p.color}20 0%, transparent 70%)`, filter: 'blur(30px)', pointerEvents: 'none' }} />
-              </div>
-            </div>
-            <div style={{ padding: '20px 24px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-              <div>
-                <div style={{ fontSize: 14, fontWeight: 700, color: '#fff' }}>{p.name}</div>
-                <div style={{ fontSize: 12, color: M }}>{p.type}</div>
-              </div>
-              {p.cta ? (
-                <a href="#contact" style={{ background: `linear-gradient(135deg, ${B}, ${P})`, color: '#fff', fontSize: 12, fontWeight: 700, padding: '8px 16px', borderRadius: 8, textDecoration: 'none' }}>
-                  Get Yours Free
-                </a>
-              ) : (
-                <div style={{ background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 8, padding: '5px 12px', fontSize: 11, color: '#86efac', fontWeight: 700 }}>Live ●</div>
-              )}
-            </div>
-          </GlassCard>
-        ))}
-      </div>
-    </section>
-  )
-}
 
 // ─── HOW IT WORKS ────────────────────────────────────────────────
 function HowItWorks() {
@@ -556,7 +483,7 @@ function Pricing() {
       <div style={{ textAlign: 'center', marginBottom: 36 }}>
         <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: 100, padding: '8px 22px', fontSize: 13, color: '#fca5a5', fontWeight: 600 }}>
           <span style={{ animation: 'live-blink 1s infinite', display: 'inline-block', width: 7, height: 7, borderRadius: '50%', background: '#ef4444' }} />
-          Only accepting 3 new clients this month — spots fill fast
+          Only accepting 3 new clients this month. Spots fill fast.
         </div>
       </div>
 
@@ -665,7 +592,7 @@ function Contact() {
 
       <div style={{ maxWidth: 660, margin: '0 auto', position: 'relative', zIndex: 1 }}>
         <div style={{ textAlign: 'center', marginBottom: 48 }}>
-          <Label color="#22c55e">Free Mockup — Zero Risk</Label>
+          <Label color="#22c55e">Free Mockup. Zero Risk.</Label>
           <h2 style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 'clamp(28px,4vw,56px)', fontWeight: 900, color: '#fff', margin: '0 0 18px', lineHeight: 1.14 }}>
             Ready to Start Getting<br /><GradientText>More Customers?</GradientText>
           </h2>
@@ -679,7 +606,7 @@ function Contact() {
             <div style={{ fontSize: 60, marginBottom: 20 }}>🎉</div>
             <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 26, fontWeight: 900, color: '#fff', marginBottom: 12 }}>You're in!</div>
             <div style={{ color: '#94a3b8', fontSize: 15, lineHeight: 1.75 }}>
-              We'll reach out within 24 hours to start your free mockup. Keep an eye on your phone — we usually call same day.
+              We'll reach out within 24 hours to start your free mockup. Keep an eye on your phone. We usually call same day.
             </div>
           </GlassCard>
         ) : (
@@ -741,7 +668,7 @@ function Footer() {
               <img src="/logo.jpg" alt="Future Media" style={{ height: 48, width: 'auto' }} />
             </div>
             <p style={{ color: '#334155', fontSize: 14, lineHeight: 1.8 }}>
-              Michigan's web design studio for local tradespeople and small businesses. We build sites that rank and convert — fast.
+              Michigan's web design studio for local tradespeople and small businesses. We build sites that rank and convert fast.
             </p>
             <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
               <a href="mailto:futuremediasam313@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(59,130,246,0.1)', border: `1px solid ${E}`, color: B, fontSize: 12, fontWeight: 600, padding: '8px 14px', borderRadius: 8, textDecoration: 'none' }}>
@@ -822,7 +749,6 @@ export default function Page() {
       <TrustStrip />
       <Problem />
       <Services />
-      <Portfolio />
       <HowItWorks />
       <Stats />
       <Testimonials />
