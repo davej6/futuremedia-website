@@ -99,21 +99,28 @@ function Label({ children, color }: { children: React.ReactNode; color?: string 
 }
 
 function GlassCard({ children, hot, style }: { children: React.ReactNode; hot?: boolean; style?: React.CSSProperties }) {
+  const [hovered, setHovered] = useState(false)
   return (
-    <div style={{
-      background: hot
-        ? `linear-gradient(160deg, rgba(37,99,235,0.12) 0%, rgba(124,58,237,0.08) 100%)`
-        : 'rgba(255,255,255,0.03)',
-      backdropFilter: 'blur(12px)',
-      WebkitBackdropFilter: 'blur(12px)',
-      border: `1px solid ${hot ? B + '50' : E2}`,
-      borderRadius: 20,
-      position: 'relative',
-      overflow: 'hidden',
-      boxShadow: hot ? `0 0 60px ${B}15, 0 20px 60px rgba(0,0,0,0.4)` : '0 4px 30px rgba(0,0,0,0.2)',
-      transition: 'transform 0.25s ease, box-shadow 0.25s ease',
-      ...style,
-    }}>
+    <div
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => setHovered(false)}
+      style={{
+        background: hot
+          ? `linear-gradient(160deg, rgba(37,99,235,0.12) 0%, rgba(124,58,237,0.08) 100%)`
+          : 'rgba(255,255,255,0.03)',
+        backdropFilter: 'blur(12px)',
+        WebkitBackdropFilter: 'blur(12px)',
+        border: `1px solid ${hot ? (hovered ? B + '80' : B + '50') : (hovered ? E + '80' : E2)}`,
+        borderRadius: 20,
+        position: 'relative',
+        overflow: 'hidden',
+        boxShadow: hovered
+          ? (hot ? `0 0 80px ${B}25, 0 24px 70px rgba(0,0,0,0.5)` : `0 12px 50px rgba(0,0,0,0.35), 0 0 0 1px ${E2}`)
+          : (hot ? `0 0 60px ${B}15, 0 20px 60px rgba(0,0,0,0.4)` : '0 4px 30px rgba(0,0,0,0.2)'),
+        transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
+        transition: 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
+        ...style,
+      }}>
       {hot && (
         <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, ${B}, ${P}, ${B})`, backgroundSize: '200%', animation: 'border-spin 3s linear infinite' }} />
       )}
@@ -153,7 +160,7 @@ function Navbar() {
             {label}
           </a>
         ))}
-        <a href="#contact" style={{
+        <a href="#pricing" style={{
           marginLeft: 8,
           background: `linear-gradient(135deg, ${B}, ${P})`,
           color: '#fff', fontSize: 14, fontWeight: 700,
@@ -204,7 +211,7 @@ function Hero() {
 
         {/* CTAs */}
         <div className="fade-up" style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginBottom: 64, animationDelay: '0.4s' }}>
-          <a href="#contact" className="pulse-btn" style={{
+          <a href="#pricing" className="pulse-btn" style={{
             background: `linear-gradient(135deg, ${B}, ${P})`,
             color: '#fff', fontSize: 17, fontWeight: 700,
             padding: '20px 40px', borderRadius: 14,
@@ -219,17 +226,11 @@ function Hero() {
         {/* Stats */}
         <div className="fade-up" style={{ display: 'flex', gap: 0, justifyContent: 'center', flexWrap: 'wrap', borderTop: `1px solid ${E2}`, paddingTop: 40, animationDelay: '0.5s' }}>
           {[['50+','Michigan Businesses'],['4.9 ★','Avg Client Rating'],['3-5 Days','Avg Launch Time'],['$0','To See Your Mockup']].map(([n, l], i) => (
-            <div key={l} style={{ padding: '0 32px', borderRight: i < 3 ? `1px solid ${E2}` : 'none', textAlign: 'center' }} className="hide-mobile">
+            <div key={l} style={{ padding: '16px 24px', textAlign: 'center', flex: '1 1 140px' }}>
               <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 28, fontWeight: 900, color: '#fff', lineHeight: 1 }}>{n}</div>
               <div style={{ fontSize: 11, color: M, marginTop: 6, letterSpacing: 0.5, textTransform: 'uppercase' }}>{l}</div>
             </div>
           ))}
-          {/* Mobile stats */}
-          <div style={{ display: 'none' }} className="stack-mobile">
-            <div style={{ textAlign: 'center' }}>
-              <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 28, fontWeight: 900, color: '#fff' }}>50+ Clients · 4.9 ★ · 3-5 Day Launch · Free Mockup</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
@@ -246,7 +247,7 @@ function TrustStrip() {
       <div style={{ position: 'absolute', right: 0, top: 0, bottom: 0, width: 80, background: `linear-gradient(-90deg, ${BG2}, transparent)`, zIndex: 2 }} />
       <div className="marquee-track">
         {double.map((t, i) => (
-          <span key={i} style={{ color: '#334155', fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', padding: '0 24px', display: 'flex', alignItems: 'center', gap: 8 }}>
+          <span key={i} style={{ color: '#64748b', fontSize: 13, fontWeight: 600, whiteSpace: 'nowrap', padding: '0 24px', display: 'flex', alignItems: 'center', gap: 8 }}>
             <span style={{ color: B, fontSize: 10 }}>●</span> {t}
           </span>
         ))}
@@ -331,7 +332,7 @@ function Services() {
 // ─── HOW IT WORKS ────────────────────────────────────────────────
 function HowItWorks() {
   return (
-    <section id="how" style={{ padding: '100px 24px', background: BG2 }}>
+    <section id="how" style={{ padding: '100px 24px', background: BG }}>
       <div style={{ maxWidth: 1000, margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: 64 }}>
           <Label>The Process</Label>
@@ -357,7 +358,7 @@ function HowItWorks() {
           ))}
         </div>
         <div style={{ textAlign: 'center', marginTop: 48 }}>
-          <a href="#contact" style={{
+          <a href="#pricing" style={{
             background: `linear-gradient(135deg, ${B}, ${P})`,
             color: '#fff', fontSize: 16, fontWeight: 700,
             padding: '18px 40px', borderRadius: 12,
@@ -412,7 +413,7 @@ function Stats() {
   return (
     <section ref={ref} style={{ padding: '0', background: BG, borderTop: `1px solid ${E2}`, borderBottom: `1px solid ${E2}`, position: 'relative', overflow: 'hidden' }}>
       <div style={{ position: 'absolute', inset: 0, background: `radial-gradient(ellipse at 50% 0%, ${B}0a 0%, transparent 60%)`, pointerEvents: 'none' }} />
-      <div style={{ maxWidth: 1160, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)' }}>
+      <div style={{ maxWidth: 1160, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))' }}>
         {items.map(({ n, suffix, label, sub }, i) => (
           <div key={label} style={{ padding: '60px 20px', textAlign: 'center', borderRight: i < 3 ? `1px solid ${E2}` : 'none' }}>
             <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 'clamp(32px,4vw,52px)', fontWeight: 900, color: '#fff', lineHeight: 1, marginBottom: 8 }}>
@@ -566,11 +567,17 @@ function FAQ() {
 
 // ─── CONTACT ─────────────────────────────────────────────────────
 function Contact() {
-  const [name, setName]   = useState('')
-  const [phone, setPhone] = useState('')
-  const [biz, setBiz]     = useState('')
-  const [type, setType]   = useState('')
-  const [done, setDone]   = useState(false)
+  const [submitted, setSubmitted] = useState(false)
+  const [btnHover, setBtnHover] = useState(false)
+
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.search.includes('submitted=true')) {
+      setSubmitted(true)
+      // Scroll into view so user sees the thank you card
+      const el = document.getElementById('contact')
+      if (el) el.scrollIntoView({ behavior: 'smooth' })
+    }
+  }, [])
 
   const inp: React.CSSProperties = {
     width: '100%',
@@ -601,45 +608,65 @@ function Contact() {
           </p>
         </div>
 
-        {done ? (
+        {submitted ? (
           <GlassCard style={{ padding: '56px 36px', textAlign: 'center' }}>
-            <div style={{ fontSize: 60, marginBottom: 20 }}>🎉</div>
-            <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 26, fontWeight: 900, color: '#fff', marginBottom: 12 }}>You're in!</div>
-            <div style={{ color: '#94a3b8', fontSize: 15, lineHeight: 1.75 }}>
-              We'll reach out within 24 hours to start your free mockup. Keep an eye on your phone. We usually call same day.
+            <div style={{ fontSize: 64, marginBottom: 20 }}>✅</div>
+            <div style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 26, fontWeight: 900, color: '#fff', marginBottom: 16 }}>Got it!</div>
+            <div style={{ color: '#94a3b8', fontSize: 16, lineHeight: 1.85, maxWidth: 420, margin: '0 auto 28px' }}>
+              We'll have your free mockup ready within 24 hours. Check your phone — Sam will be in touch.
+            </div>
+            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(34,197,94,0.1)', border: '1px solid rgba(34,197,94,0.3)', borderRadius: 12, padding: '14px 24px', fontSize: 14, color: '#86efac', fontWeight: 700 }}>
+              <span style={{ fontSize: 18 }}>✓</span> Request received — we'll be in touch soon
             </div>
           </GlassCard>
         ) : (
           <GlassCard style={{ padding: 40 }}>
-            <form onSubmit={e => { e.preventDefault(); setDone(true) }} style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
-              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 16 }}>
+            <form
+              action="https://formspree.io/f/xgopolbd"
+              method="POST"
+              style={{ display: 'flex', flexDirection: 'column', gap: 16 }}
+            >
+              <input type="hidden" name="_subject" value="New Free Mockup Request — Future Media" />
+              <input type="hidden" name="_next" value="https://futuremedia-website.vercel.app/?submitted=true" />
+
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 16 }}>
                 <div>
                   <label style={{ fontSize: 12, color: '#94a3b8', fontWeight: 700, display: 'block', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Your Name *</label>
-                  <input required value={name} onChange={e => setName(e.target.value)} placeholder="John Smith" style={inp} />
+                  <input required name="name" placeholder="John Smith" style={inp} />
                 </div>
                 <div>
                   <label style={{ fontSize: 12, color: '#94a3b8', fontWeight: 700, display: 'block', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Phone Number *</label>
-                  <input required value={phone} onChange={e => setPhone(e.target.value)} placeholder="(313) 555-0100" style={inp} />
+                  <input required name="phone" placeholder="(313) 555-0100" type="tel" style={inp} />
                 </div>
               </div>
               <div>
-                <label style={{ fontSize: 12, color: '#94a3b8', fontWeight: 700, display: 'block', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Business Name *</label>
-                <input required value={biz} onChange={e => setBiz(e.target.value)} placeholder="Smith Plumbing LLC" style={inp} />
+                <label style={{ fontSize: 12, color: '#94a3b8', fontWeight: 700, display: 'block', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Email Address *</label>
+                <input required name="email" placeholder="john@smithplumbing.com" type="email" style={inp} />
               </div>
               <div>
-                <label style={{ fontSize: 12, color: '#94a3b8', fontWeight: 700, display: 'block', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>What type of business? *</label>
-                <input required value={type} onChange={e => setType(e.target.value)} placeholder="e.g. Plumber, Electrician, HVAC, Roofer..." style={inp} />
+                <label style={{ fontSize: 12, color: '#94a3b8', fontWeight: 700, display: 'block', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Business Name *</label>
+                <input required name="business_name" placeholder="Smith Plumbing LLC" style={inp} />
               </div>
-              <button type="submit" style={{
-                marginTop: 8,
-                background: `linear-gradient(135deg, ${B}, ${P})`,
-                border: 'none', borderRadius: 14,
-                color: '#fff', fontSize: 17, fontWeight: 800,
-                padding: '20px', cursor: 'pointer',
-                boxShadow: `0 0 60px ${B}40`,
-                letterSpacing: 0.3,
-                fontFamily: "'Montserrat', sans-serif",
-              }}>
+              <div>
+                <label style={{ fontSize: 12, color: '#94a3b8', fontWeight: 700, display: 'block', marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>Type of Business *</label>
+                <input required name="business_type" placeholder="e.g. Plumber, Electrician, HVAC, Roofer..." style={inp} />
+              </div>
+              <button
+                type="submit"
+                onMouseEnter={() => setBtnHover(true)}
+                onMouseLeave={() => setBtnHover(false)}
+                style={{
+                  marginTop: 8,
+                  background: `linear-gradient(135deg, ${B}, ${P})`,
+                  border: 'none', borderRadius: 14,
+                  color: '#fff', fontSize: 17, fontWeight: 800,
+                  padding: '20px', cursor: 'pointer',
+                  boxShadow: btnHover ? `0 0 80px ${B}55` : `0 0 60px ${B}40`,
+                  transform: btnHover ? 'translateY(-2px)' : 'none',
+                  transition: 'all 0.2s ease',
+                  letterSpacing: 0.3,
+                  fontFamily: "'Montserrat', sans-serif",
+                }}>
                 Send Me My Free Mockup →
               </button>
               <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, marginTop: 4, flexWrap: 'wrap' }}>
@@ -662,15 +689,15 @@ function Footer() {
   return (
     <footer style={{ borderTop: `1px solid ${E2}`, padding: '56px 24px 32px', background: '#030408' }}>
       <div style={{ maxWidth: 1160, margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr', gap: 48, marginBottom: 48 }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 48, marginBottom: 48 }}>
           <div style={{ maxWidth: 300 }}>
             <div style={{ marginBottom: 18 }}>
               <img src="/logo.jpg" alt="Future Media" style={{ height: 48, width: 'auto' }} />
             </div>
-            <p style={{ color: '#334155', fontSize: 14, lineHeight: 1.8 }}>
+            <p style={{ color: '#64748b', fontSize: 14, lineHeight: 1.8 }}>
               Michigan's web design studio for local tradespeople and small businesses. We build sites that rank and convert fast.
             </p>
-            <div style={{ display: 'flex', gap: 10, marginTop: 20 }}>
+            <div style={{ display: 'flex', gap: 10, marginTop: 20, flexWrap: 'wrap' }}>
               <a href="mailto:futuremediasam313@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: 'rgba(59,130,246,0.1)', border: `1px solid ${E}`, color: B, fontSize: 12, fontWeight: 600, padding: '8px 14px', borderRadius: 8, textDecoration: 'none' }}>
                 📧 Email Us
               </a>
@@ -681,21 +708,21 @@ function Footer() {
           </div>
           <div>
             <div style={{ color: '#fff', fontWeight: 700, fontSize: 12, marginBottom: 18, letterSpacing: 1.5, textTransform: 'uppercase' }}>Pages</div>
-            {[['#services','Services'],['#how','How It Works'],['#portfolio','Our Work'],['#reviews','Reviews'],['#pricing','Pricing'],['#contact','Get Free Mockup']].map(([href, label]) => (
+            {[['#services','Services'],['#how','How It Works'],['#reviews','Results'],['#pricing','Pricing'],['#contact','Get Free Mockup']].map(([href, label]) => (
               <div key={href} style={{ marginBottom: 12 }}>
-                <a href={href} style={{ color: '#334155', fontSize: 14, textDecoration: 'none', transition: 'color 0.2s' }}
+                <a href={href} style={{ color: '#64748b', fontSize: 14, textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#fff')}
-                  onMouseLeave={e => (e.currentTarget.style.color = '#334155')}>{label}</a>
+                  onMouseLeave={e => (e.currentTarget.style.color = '#64748b')}>{label}</a>
               </div>
             ))}
           </div>
           <div>
             <div style={{ color: '#fff', fontWeight: 700, fontSize: 12, marginBottom: 18, letterSpacing: 1.5, textTransform: 'uppercase' }}>Contact</div>
-            <div style={{ color: '#334155', fontSize: 14, marginBottom: 12 }}>
-              <a href="mailto:futuremediasam313@gmail.com" style={{ color: '#334155', textDecoration: 'none' }}>📧 futuremediasam313@gmail.com</a>
+            <div style={{ fontSize: 14, marginBottom: 12 }}>
+              <a href="mailto:futuremediasam313@gmail.com" style={{ color: '#64748b', textDecoration: 'none' }}>📧 futuremediasam313@gmail.com</a>
             </div>
-            <div style={{ color: '#334155', fontSize: 14, marginBottom: 12 }}>📍 Michigan, United States</div>
-            <div style={{ color: '#334155', fontSize: 14, marginBottom: 20 }}>⚡ 3-5 Day Launch Guarantee</div>
+            <div style={{ color: '#64748b', fontSize: 14, marginBottom: 12 }}>📍 Michigan, United States</div>
+            <div style={{ color: '#64748b', fontSize: 14, marginBottom: 20 }}>⚡ 3-5 Day Launch Guarantee</div>
             <div style={{ background: 'rgba(34,197,94,0.08)', border: '1px solid rgba(34,197,94,0.2)', borderRadius: 10, padding: '12px 16px' }}>
               <div style={{ fontSize: 11, color: '#86efac', fontWeight: 700, marginBottom: 4, textTransform: 'uppercase', letterSpacing: 1 }}>No Monthly Fees</div>
               <div style={{ fontSize: 12, color: '#64748b' }}>All packages are one-time payments. You own your site.</div>
@@ -703,10 +730,10 @@ function Footer() {
           </div>
         </div>
         <div style={{ borderTop: `1px solid ${E2}`, paddingTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <p style={{ color: '#1e293b', fontSize: 13, margin: 0 }}>© 2025 Future Media Web Design Studio. All rights reserved.</p>
+          <p style={{ color: '#475569', fontSize: 13, margin: 0 }}>© 2026 Future Media Web Design Studio. All rights reserved.</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <Stars size={12} />
-            <span style={{ color: '#334155', fontSize: 12 }}>4.9/5 from 50+ Michigan businesses</span>
+            <span style={{ color: '#475569', fontSize: 12 }}>4.9/5 from 50+ Michigan businesses</span>
           </div>
         </div>
       </div>
@@ -724,7 +751,7 @@ function PulseCTA() {
   }, [])
   if (!show) return null
   return (
-    <a href="#contact" className="pulse-btn" style={{
+    <a href="#pricing" className="pulse-btn" style={{
       position: 'fixed', bottom: 28, right: 28, zIndex: 500,
       width: 64, height: 64,
       background: `linear-gradient(135deg, ${B}, ${P})`,
@@ -734,7 +761,7 @@ function PulseCTA() {
       boxShadow: `0 0 40px ${B}50`,
       fontSize: 26,
       animation: 'pulse-ring 2.5s infinite',
-    }} title="Get Free Mockup">
+    }} title="See Our Packages">
       ⚡
     </a>
   )
