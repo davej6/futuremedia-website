@@ -105,25 +105,22 @@ function GlassCard({ children, hot, style }: { children: React.ReactNode; hot?: 
       onMouseEnter={() => setHovered(true)}
       onMouseLeave={() => setHovered(false)}
       style={{
-        background: hot
-          ? `linear-gradient(160deg, rgba(37,99,235,0.12) 0%, rgba(124,58,237,0.08) 100%)`
-          : 'rgba(255,255,255,0.03)',
+        background: 'rgba(255,255,255,0.03)',
         backdropFilter: 'blur(12px)',
         WebkitBackdropFilter: 'blur(12px)',
-        border: `1px solid ${hot ? (hovered ? B + '80' : B + '50') : (hovered ? E + '80' : E2)}`,
+        border: hot
+          ? `2px solid ${hovered ? '#9d8fff' : '#7c6af7'}`
+          : `1px solid ${hovered ? '#2a2d3e' : '#1e1e2e'}`,
         borderRadius: 20,
         position: 'relative',
-        overflow: 'hidden',
+        overflow: 'visible',
         boxShadow: hovered
-          ? (hot ? `0 0 80px ${B}25, 0 24px 70px rgba(0,0,0,0.5)` : `0 12px 50px rgba(0,0,0,0.35), 0 0 0 1px ${E2}`)
-          : (hot ? `0 0 60px ${B}15, 0 20px 60px rgba(0,0,0,0.4)` : '0 4px 30px rgba(0,0,0,0.2)'),
+          ? (hot ? `0 0 60px rgba(124,106,247,0.2), 0 24px 70px rgba(0,0,0,0.5)` : `0 12px 50px rgba(0,0,0,0.35)`)
+          : (hot ? `0 0 40px rgba(124,106,247,0.1), 0 20px 60px rgba(0,0,0,0.4)` : '0 4px 30px rgba(0,0,0,0.2)'),
         transform: hovered ? 'translateY(-4px)' : 'translateY(0)',
         transition: 'transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease',
         ...style,
       }}>
-      {hot && (
-        <div style={{ position: 'absolute', top: 0, left: 0, right: 0, height: 2, background: `linear-gradient(90deg, ${B}, ${P}, ${B})`, backgroundSize: '200%', animation: 'border-spin 3s linear infinite' }} />
-      )}
       {children}
     </div>
   )
@@ -490,15 +487,15 @@ function Pricing() {
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 20, alignItems: 'start' }}>
         {PRICING.map(p => (
-          <GlassCard key={p.name} hot={p.hot} style={{ padding: 36 }}>
+          <GlassCard key={p.name} hot={p.hot} style={{ padding: 36, paddingTop: p.badge ? 44 : 36 }}>
             {p.badge && (
-              <div style={{ position: 'absolute', top: -14, left: '50%', transform: 'translateX(-50%)', background: `linear-gradient(135deg, ${B}, ${P})`, color: '#fff', fontSize: 11, fontWeight: 800, padding: '5px 20px', borderRadius: 100, whiteSpace: 'nowrap', letterSpacing: 0.5 }}>{p.badge}</div>
+              <div style={{ position: 'absolute', top: -13, left: '50%', transform: 'translateX(-50%)', background: '#7c6af7', color: '#fff', fontSize: 12, fontWeight: 700, padding: '4px 16px', borderRadius: 20, whiteSpace: 'nowrap', letterSpacing: 0.3 }}>{p.badge}</div>
             )}
             <div style={{ fontSize: 12, fontWeight: 700, color: M, marginBottom: 8, textTransform: 'uppercase', letterSpacing: 1 }}>{p.name}</div>
             <div style={{ display: 'flex', alignItems: 'baseline', gap: 4, marginBottom: 4 }}>
               <span style={{ fontFamily: "'Montserrat', sans-serif", fontSize: 52, fontWeight: 900, color: '#fff', lineHeight: 1 }}>{p.price}</span>
             </div>
-            <div style={{ color: B, fontSize: 12, fontWeight: 700, marginBottom: 28, textTransform: 'uppercase', letterSpacing: 1 }}>{p.sub}</div>
+            <div style={{ color: '#7c6af7', fontSize: 11, fontWeight: 700, marginBottom: 28, textTransform: 'uppercase', letterSpacing: 2 }}>{p.sub}</div>
             <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px' }}>
               {p.features.map(f => (
                 <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, marginBottom: 12, fontSize: 14, color: '#cbd5e1' }}>
@@ -510,11 +507,13 @@ function Pricing() {
             <a href="#contact" style={{
               display: 'block', textAlign: 'center', padding: '15px',
               borderRadius: 12, fontWeight: 700, fontSize: 15, textDecoration: 'none',
-              background: p.hot ? `linear-gradient(135deg, ${B}, ${P})` : 'rgba(255,255,255,0.05)',
+              background: p.hot ? '#7c6af7' : 'rgba(255,255,255,0.05)',
               color: '#fff',
-              border: p.hot ? 'none' : `1px solid ${E2}`,
-              boxShadow: p.hot ? `0 0 40px ${B}30` : 'none',
-            }}>
+              border: p.hot ? 'none' : '1px solid #2a2d3e',
+              transition: 'background 0.2s ease',
+            }}
+              onMouseEnter={e => { if (p.hot) e.currentTarget.style.background = '#9d8fff' }}
+              onMouseLeave={e => { if (p.hot) e.currentTarget.style.background = '#7c6af7' }}>
               {p.cta}
             </a>
           </GlassCard>
