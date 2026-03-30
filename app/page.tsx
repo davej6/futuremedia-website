@@ -153,8 +153,6 @@ function Navbar() {
 function Hero() {
   return (
     <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', padding: '120px 32px 80px' }}>
-      {/* Blue corner accent */}
-      <div style={{ position: 'absolute', top: 0, right: 0, width: '45vw', height: '100%', background: `linear-gradient(225deg, ${BLUE}18 0%, transparent 60%)`, pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 1, background: BORDER2 }} />
 
       <div style={{ maxWidth: 1200, margin: '0 auto', width: '100%', display: 'grid', gridTemplateColumns: '1fr auto', gap: 60, alignItems: 'center' }}>
