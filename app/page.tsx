@@ -7,8 +7,8 @@ const BG2     = '#070914'
 const BG3     = '#0b0d1c'
 const BLUE    = '#0050FF'
 const BLUE2   = '#003DCC'
-const ORANGE  = '#FF5500'
-const ORANGE2 = '#CC4400'
+const ORANGE  = '#06B6D4'
+const ORANGE2 = '#0891B2'
 const WHITE   = '#EEF0FF'
 const WHITE2  = '#8A8DA8'
 const MUTED   = '#464860'
@@ -120,7 +120,9 @@ function Navbar() {
       display: 'flex', alignItems: 'center', justifyContent: 'space-between',
     }}>
       <a href="#" style={{ textDecoration: 'none', lineHeight: 0 }}>
-        <img src="/logo.jpg" alt="Future Media" style={{ height: 40, width: 'auto', display: 'block' }} />
+        <span style={{ fontFamily: DF, fontWeight: 900, fontSize: 26, letterSpacing: '-0.5px', color: WHITE, lineHeight: 1 }}>
+          FUTURE <span style={{ color: BLUE }}>MEDIA</span>
+        </span>
       </a>
       <div style={{ display: 'flex', alignItems: 'center', gap: 2 }}>
         {[['#services','Services'],['#how','Process'],['#reviews','Results'],['#pricing','Pricing']].map(([href, label]) => (
@@ -150,7 +152,7 @@ function Navbar() {
 // ─── HERO ─────────────────────────────────────────────────────────────
 function Hero() {
   return (
-    <section className="dot-grid" style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', padding: '120px 32px 80px' }}>
+    <section style={{ position: 'relative', minHeight: '100vh', display: 'flex', alignItems: 'center', overflow: 'hidden', padding: '120px 32px 80px' }}>
       {/* Blue corner accent */}
       <div style={{ position: 'absolute', top: 0, right: 0, width: '45vw', height: '100%', background: `linear-gradient(225deg, ${BLUE}18 0%, transparent 60%)`, pointerEvents: 'none' }} />
       <div style={{ position: 'absolute', bottom: 0, left: 0, right: 0, height: 1, background: BORDER2 }} />
@@ -566,13 +568,6 @@ function Pricing() {
           <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16 }}>Every package starts with a free mockup. You don&apos;t pay until you love the design.</p>
         </div>
 
-        {/* Urgency banner */}
-        <div style={{ textAlign: 'center', marginBottom: 36 }}>
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(239,68,68,0.08)', border: '1px solid rgba(239,68,68,0.2)', borderRadius: 100, padding: '8px 22px', fontFamily: BF, fontSize: 13, color: '#fca5a5', fontWeight: 600 }}>
-            <span style={{ animation: 'live-blink 1s infinite', display: 'inline-block', width: 7, height: 7, borderRadius: '50%', background: RED }} />
-            Only accepting 3 new clients this month — spots fill fast
-          </span>
-        </div>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 16, alignItems: 'start' }}>
           {PRICING.map(p => <PricingCard key={p.name} p={p} />)}
@@ -779,7 +774,9 @@ function Footer() {
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 48, marginBottom: 48 }}>
           <div style={{ maxWidth: 300 }}>
-            <img src="/logo.jpg" alt="Future Media" style={{ height: 44, width: 'auto', marginBottom: 16 }} />
+            <div style={{ fontFamily: DF, fontWeight: 900, fontSize: 28, letterSpacing: '-0.5px', color: WHITE, lineHeight: 1, marginBottom: 16 }}>
+              FUTURE <span style={{ color: BLUE }}>MEDIA</span>
+            </div>
             <p style={{ fontFamily: BF, color: MUTED, fontSize: 14, lineHeight: 1.8, marginBottom: 20 }}>
               Michigan&apos;s web design studio for local tradespeople and small businesses. We build sites that rank and convert — fast.
             </p>
