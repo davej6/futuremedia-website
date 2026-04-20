@@ -28,7 +28,7 @@ const TESTIMONIALS = [
 ]
 
 const SERVICES = [
-  { tag: 'From $799 One-Time', title: 'Custom Website Design',         desc: 'Mobile first, lightning fast sites built to rank on Google and turn visitors into calls. No templates, no cookie cutter garbage. Every site built from scratch.' },
+  { tag: 'From $499 One-Time', title: 'Custom Website Design',         desc: 'Mobile first, lightning fast sites built to rank on Google and turn visitors into calls. No templates, no cookie cutter garbage. Every site built from scratch.' },
   { tag: 'Included Free',       title: 'Local SEO & Google Rankings',   desc: 'We optimize your site so you show up when people search "plumber near me" or "electrician in [your city]". Dominate your local market from day one.' },
   { tag: 'Included Free',       title: 'Google Reviews Growth',         desc: 'Automated systems that collect more 5 star reviews, making you the obvious choice over every competitor in your market. Reviews equal trust equals customers.' },
   { tag: '1st Year Free',       title: 'Hosting & Maintenance',         desc: 'First year of hosting included free with every package. Fast, secure, fully managed. You focus on your trade, we handle your web presence.' },
@@ -42,27 +42,21 @@ const STEPS = [
 
 const PRICING = [
   {
-    name: 'Starter', price: '$799', sub: 'one-time',
+    name: 'Starter', price: '$499', sub: 'one-time',
     stripe: 'https://buy.stripe.com/cNi00i8Yi1Oc6X65qG8g002',
-    features: ['Custom 5 page website', 'Mobile responsive design', 'Google Maps integration', 'Contact form + click to call', 'Basic on page SEO', '3 revision rounds', '1 year free hosting', '3 to 5 day delivery'],
+    features: ['Custom 5 page website', 'Mobile responsive design', 'Google Maps integration', 'Contact form + click to call', 'Basic on page SEO', '1 revision round', '1 year free hosting', '3 to 5 day delivery'],
     hot: false,
   },
   {
-    name: 'Pro', price: '$1,499', sub: 'one-time', badge: 'Most Popular',
+    name: 'Pro', price: '$999', sub: 'one-time', badge: 'Most Popular',
     stripe: 'https://buy.stripe.com/aFaeVccau50oa9i6uK8g003',
-    features: ['Custom 8 page website', 'Full local SEO setup', 'Google Business optimization', 'Review collection system', 'Speed optimization', '5 revision rounds', '1 year free hosting', '5 to 7 day delivery', '30 day post launch support'],
+    features: ['Custom 8 page website', 'Full local SEO setup', 'Google Business optimization', 'Review collection system', 'Speed optimization', '3 revision rounds', '1 year free hosting', '5 to 7 day delivery', '30 day post launch support'],
     hot: true,
   },
   {
-    name: 'Elite', price: '$2,999', sub: 'one-time',
+    name: 'Elite', price: '$1,999', sub: 'one-time',
     stripe: 'https://buy.stripe.com/7sYeVc0rM3Wka9i4mC8g004',
-    features: ['Custom 15+ page website', 'Advanced SEO + blog setup', 'Google Ads campaign setup', 'Analytics dashboard', '10 revision rounds', '1 year free hosting', '90 day priority support'],
-    hot: false,
-  },
-  {
-    name: 'Website Care Plan', price: '$49', sub: 'per month · optional add-on',
-    stripe: 'https://buy.stripe.com/REPLACE_WITH_RECURRING_49_MO',
-    features: ['Hosting + SSL + domain renewals', '1 content update per month', '1 Google Business post per month', 'Uptime monitoring + weekly backups', 'Priority support response', 'First 30 days free with any package'],
+    features: ['Custom 15+ page website', 'Advanced SEO + blog setup', 'Regular content updates', 'Google Ads campaign setup', 'Analytics dashboard', 'Unlimited revisions', '1 year free hosting', '90 day priority support'],
     hot: false,
   },
 ]
