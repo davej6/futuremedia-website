@@ -56,6 +56,11 @@ a { transition: opacity 0.15s; }
   100% { transform: translateX(300%); }
 }
 
+@keyframes btn-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(0,80,255,0.25), 0 0 40px rgba(0,80,255,0.08); }
+  50%      { box-shadow: 0 0 30px rgba(0,80,255,0.45), 0 0 60px rgba(0,80,255,0.15); }
+}
+
 /* ── UTILITY CLASSES ───────────────────────────────────── */
 
 .fade-up {
@@ -65,6 +70,10 @@ a { transition: opacity 0.15s; }
 
 .fade-in  { animation: fade-in 0.6s ease forwards; }
 .slide-right { animation: slide-right 0.65s cubic-bezier(0.22,1,0.36,1) forwards; opacity: 0; }
+
+.btn-glow {
+  animation: btn-glow 2.5s ease-in-out infinite;
+}
 
 /* ── MARQUEE ───────────────────────────────────────────── */
 .marquee-track {

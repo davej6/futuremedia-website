@@ -2,14 +2,20 @@ import type { Metadata } from 'next'
 import './globals.css'
 
 export const metadata: Metadata = {
-  title: 'Future Media — Michigan Web Design for Local Businesses',
+  title: 'Future Media | Michigan Web Design for Local Businesses',
   description: 'Future Media builds high-converting websites for Michigan plumbers, electricians, HVAC, roofers, and local businesses. Get your FREE mockup today.',
   keywords: 'web design Michigan, local business website, plumber website, electrician website, HVAC website, Michigan SEO',
+  icons: {
+    icon: '/logo.jpg',
+    apple: '/logo.jpg',
+  },
   openGraph: {
-    title: 'Future Media — Michigan Web Design Studio',
+    title: 'Future Media | Michigan Web Design Studio',
     description: 'We build websites that rank on Google and turn searchers into customers. Free mockup for Michigan businesses.',
     type: 'website',
+    url: 'https://futuremediawebdesign.com',
   },
+  metadataBase: new URL('https://futuremediawebdesign.com'),
 }
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

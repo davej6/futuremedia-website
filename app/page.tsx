@@ -7,11 +7,9 @@ const BG2     = '#070914'
 const BG3     = '#0b0d1c'
 const BLUE    = '#0050FF'
 const BLUE2   = '#003DCC'
-const ORANGE  = '#06B6D4'
-const ORANGE2 = '#0891B2'
 const WHITE   = '#EEF0FF'
-const WHITE2  = '#8A8DA8'
-const MUTED   = '#464860'
+const WHITE2  = '#d0d3ea'
+const MUTED   = '#6b6e8a'
 const BORDER  = 'rgba(0,80,255,0.14)'
 const BORDER2 = 'rgba(255,255,255,0.07)'
 const GREEN   = '#22c55e'
@@ -24,55 +22,61 @@ const TESTIMONIALS = [
   { init: 'M', name: 'Mike T.',  biz: 'Detroit Plumbing Pro',    city: 'Detroit',         result: '12 new calls/month', text: 'Sam built us a site in one week. First month we got 12 new calls from Google alone. Paid for itself 10x over. Wish I did this years ago.' },
   { init: 'R', name: 'Rick S.',  biz: 'S&S Electric',            city: 'Sterling Heights', result: '40% more leads',     text: "I was skeptical. Now our phone hasn't stopped ringing since launch. Best investment I made all year. I've been in business 18 years." },
   { init: 'J', name: 'Josh M.',  biz: 'Metro HVAC',              city: 'Warren',           result: '#2 Google ranking',  text: 'The free mockup sold me. No pushy sales pitch, just results. We rank #2 on Google for "HVAC Warren" now. Competitors with older sites are below us.' },
-  { init: 'D', name: 'Dave K.',  biz: 'K&K Roofing',             city: 'Livonia',          result: 'Outranking 5-yr sites', text: 'Competitors had websites for years on us. We launched 3 months ago and are already outranking them locally. Sam delivered exactly what he promised.' },
+  { init: 'D', name: 'Dave K.',  biz: 'K&K Roofing',             city: 'Livonia',          result: 'Outranking 5 yr sites', text: 'Competitors had websites for years on us. We launched 3 months ago and are already outranking them locally. Sam delivered exactly what he promised.' },
   { init: 'T', name: 'Tony B.',  biz: 'B&B Auto Repair',         city: 'Pontiac',          result: '+40% Google calls',  text: 'Google calls up 40% since launch. Customers can actually find us now. I was paying for ads that weren\'t working. This site made them irrelevant.' },
   { init: 'C', name: 'Chris R.', biz: 'Royal Oak Landscaping',   city: 'Royal Oak',        result: '15 new clients/mo',  text: 'Answered every question fast, delivered exactly what they promised. Zero BS. Real professionals. The site looks 10x better than I expected.' },
 ]
 
 const SERVICES = [
-  { icon: '⚡', tag: 'From $499 One-Time', title: 'Custom Website Design',         desc: 'Mobile-first, lightning-fast sites built to rank on Google and turn visitors into calls. No templates, no cookie-cutter garbage. Every site built from scratch.' },
-  { icon: '📍', tag: 'Included Free',       title: 'Local SEO & Google Rankings',   desc: 'We optimize your site so you show up when people search "plumber near me" or "electrician in [your city]". Dominate your local market from day one.' },
-  { icon: '⭐', tag: 'Included Free',       title: 'Google Reviews Growth',         desc: 'Automated systems that collect more 5-star reviews, making you the obvious choice over every competitor in your market. Reviews = trust = customers.' },
-  { icon: '🔒', tag: '1st Year Free',       title: 'Hosting & Maintenance',         desc: 'First year of hosting included free with every package. Fast, secure, fully managed. You focus on your trade — we handle your web presence.' },
+  { tag: 'From $799 One-Time', title: 'Custom Website Design',         desc: 'Mobile first, lightning fast sites built to rank on Google and turn visitors into calls. No templates, no cookie cutter garbage. Every site built from scratch.' },
+  { tag: 'Included Free',       title: 'Local SEO & Google Rankings',   desc: 'We optimize your site so you show up when people search "plumber near me" or "electrician in [your city]". Dominate your local market from day one.' },
+  { tag: 'Included Free',       title: 'Google Reviews Growth',         desc: 'Automated systems that collect more 5 star reviews, making you the obvious choice over every competitor in your market. Reviews equal trust equals customers.' },
+  { tag: '1st Year Free',       title: 'Hosting & Maintenance',         desc: 'First year of hosting included free with every package. Fast, secure, fully managed. You focus on your trade, we handle your web presence.' },
 ]
 
 const STEPS = [
   { n: '01', title: 'Get a Free Mockup',  desc: 'We design a real visual of your new website for free. No commitment, no credit card, no risk. You see it before paying a dollar.' },
-  { n: '02', title: 'We Build It Fast',   desc: 'Once you approve, our team builds your site in 3–5 days. Professional, fast, and done right the first time with no cutting corners.' },
-  { n: '03', title: 'Your Phone Rings',   desc: 'Your site goes live, ranks on Google, and customers start calling. That\'s the whole point — and that\'s what we deliver every time.' },
+  { n: '02', title: 'We Build It Fast',   desc: 'Once you approve, our team builds your site in 3 to 5 days. Professional, fast, and done right the first time with no cutting corners.' },
+  { n: '03', title: 'Your Phone Rings',   desc: 'Your site goes live, ranks on Google, and customers start calling. That\'s the whole point, and that\'s what we deliver every time.' },
 ]
 
 const PRICING = [
   {
-    name: 'Starter', price: '$499', sub: 'one-time',
+    name: 'Starter', price: '$799', sub: 'one-time',
     stripe: 'https://buy.stripe.com/cNi00i8Yi1Oc6X65qG8g002',
-    features: ['Custom 5-page website', 'Mobile responsive design', 'Google Maps integration', 'Contact form + click-to-call', 'Basic on-page SEO', '1 revision round', '1 year free hosting', '3–5 day delivery'],
-    cta: 'Get Started', hot: false,
+    features: ['Custom 5 page website', 'Mobile responsive design', 'Google Maps integration', 'Contact form + click to call', 'Basic on page SEO', '3 revision rounds', '1 year free hosting', '3 to 5 day delivery'],
+    hot: false,
   },
   {
-    name: 'Pro', price: '$999', sub: 'one-time', badge: 'Most Popular',
+    name: 'Pro', price: '$1,499', sub: 'one-time', badge: 'Most Popular',
     stripe: 'https://buy.stripe.com/aFaeVccau50oa9i6uK8g003',
-    features: ['Custom 8-page website', 'Full local SEO setup', 'Google Business optimization', 'Review collection system', 'Speed optimization', '3 revision rounds', '1 year free hosting', '5–7 day delivery', '30-day post-launch support'],
-    cta: 'Get Free Mockup', hot: true,
+    features: ['Custom 8 page website', 'Full local SEO setup', 'Google Business optimization', 'Review collection system', 'Speed optimization', '5 revision rounds', '1 year free hosting', '5 to 7 day delivery', '30 day post launch support'],
+    hot: true,
   },
   {
-    name: 'Elite', price: '$1,999', sub: 'one-time',
+    name: 'Elite', price: '$2,999', sub: 'one-time',
     stripe: 'https://buy.stripe.com/7sYeVc0rM3Wka9i4mC8g004',
-    features: ['Custom 15+ page website', 'Advanced SEO + blog setup', 'Regular content updates', 'Google Ads campaign setup', 'Analytics dashboard', 'Unlimited revisions', '1 year free hosting', '90-day priority support'],
-    cta: "Let's Talk", hot: false,
+    features: ['Custom 15+ page website', 'Advanced SEO + blog setup', 'Google Ads campaign setup', 'Analytics dashboard', '10 revision rounds', '1 year free hosting', '90 day priority support'],
+    hot: false,
+  },
+  {
+    name: 'Website Care Plan', price: '$49', sub: 'per month · optional add-on',
+    stripe: 'https://buy.stripe.com/REPLACE_WITH_RECURRING_49_MO',
+    features: ['Hosting + SSL + domain renewals', '1 content update per month', '1 Google Business post per month', 'Uptime monitoring + weekly backups', 'Priority support response', 'First 30 days free with any package'],
+    hot: false,
   },
 ]
 
 const FAQS = [
-  { q: 'How long does it take?',              a: 'Most websites are live in 3–5 days. We work fast because we know your time is money. Larger Elite projects run 7–10 days.' },
+  { q: 'How long does it take?',              a: 'Most websites are live in 3 to 5 days. We work fast because we know your time is money. Larger Elite projects run 7 to 10 days.' },
   { q: 'What is this "free mockup" thing?',   a: 'Before you pay a single dollar, we build you a real visual mockup of your website. You approve it, then we build it. Zero risk. If you don\'t love it, you walk away and owe us nothing.' },
   { q: 'Do I own my website?',                a: '100% yes. You own the domain, the content, and all the code. We build it for you and hand over the keys. It\'s yours forever.' },
-  { q: 'Will I rank on Google?',              a: 'That\'s the whole point. Every site we build includes local SEO so you rank when people in your city search for your service. Most clients see rankings within 30–60 days.' },
-  { q: 'What if I\'m not tech-savvy?',        a: 'Completely fine. You don\'t touch a thing. We handle all updates, hosting, and maintenance. Just reach out when you need a change.' },
-  { q: 'Are there any monthly fees?',         a: 'No monthly fees ever. All packages are one-time payments. You own your site outright. Hosting after year one is the only optional cost — you handle it or we manage it for a small flat fee.' },
+  { q: 'Will I rank on Google?',              a: 'That\'s the whole point. Every site we build includes local SEO so you rank when people in your city search for your service. Most clients see rankings within 30 to 60 days.' },
+  { q: 'What if I\'m not tech savvy?',        a: 'Completely fine. You don\'t touch a thing. We handle all updates, hosting, and maintenance. Just reach out when you need a change.' },
+  { q: 'Are there any monthly fees?',         a: 'No monthly fees ever. All packages are one time payments. You own your site outright. Hosting after year one is the only optional cost. You handle it or we manage it for a small flat fee.' },
 ]
 
-const TRADES = ['Plumbers','Electricians','HVAC Contractors','Roofers','Auto Repair Shops','Landscapers','General Contractors','Towing Companies','Welding Shops','Painters','Cleaning Services','Pest Control','Moving Companies','Handymen','Flooring Companies']
+const TRADES = ['Plumbers','Electricians','HVAC Contractors','Roofers','Auto Repair Shops','Landscapers','General Contractors','Welding Shops','Painters','Cleaning Services','Pest Control','Moving Companies','Handymen','Flooring Companies']
 
 // ─── HELPERS ──────────────────────────────────────────────────────────
 function Stars({ n = 5, size = 14 }: { n?: number; size?: number }) {
@@ -95,6 +99,37 @@ function SectionLabel({ children, align = 'center' }: { children: React.ReactNod
   return (
     <div style={{ textAlign: align, marginBottom: 10 }}>
       <Tag>{children}</Tag>
+    </div>
+  )
+}
+
+function Reveal({ children, delay = 0, direction = 'up' }: { children: React.ReactNode; delay?: number; direction?: 'up' | 'left' | 'right' }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const [visible, setVisible] = useState(false)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { setVisible(true); obs.disconnect() }
+    }, { threshold: 0.1 })
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  const offsets: Record<string, string> = {
+    up: 'translateY(40px)',
+    left: 'translateX(-40px)',
+    right: 'translateX(40px)',
+  }
+
+  return (
+    <div ref={ref} style={{
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'translate(0)' : offsets[direction],
+      transition: `all 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
+    }}>
+      {children}
     </div>
   )
 }
@@ -135,14 +170,14 @@ function Navbar() {
         ))}
         <a href="#contact" style={{
           marginLeft: 12, fontFamily: BF, fontWeight: 700,
-          background: ORANGE, color: '#fff', fontSize: 14,
+          background: BLUE, color: '#fff', fontSize: 14,
           padding: '10px 22px', borderRadius: 8,
           textDecoration: 'none', whiteSpace: 'nowrap',
           transition: 'background 0.2s, transform 0.15s',
         }}
-          onMouseEnter={e => { e.currentTarget.style.background = ORANGE2; e.currentTarget.style.transform = 'translateY(-1px)' }}
-          onMouseLeave={e => { e.currentTarget.style.background = ORANGE; e.currentTarget.style.transform = 'translateY(0)' }}>
-          Free Mockup →
+          onMouseEnter={e => { e.currentTarget.style.background = BLUE2; e.currentTarget.style.transform = 'translateY(-1px)' }}
+          onMouseLeave={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.transform = 'translateY(0)' }}>
+          Free Mockup
         </a>
       </div>
     </nav>
@@ -177,44 +212,44 @@ function Hero() {
           <h1 className="fade-up" style={{ fontFamily: DF, fontWeight: 900, fontSize: 'clamp(54px,7.5vw,108px)', lineHeight: 0.92, letterSpacing: '-1px', color: WHITE, margin: '0 0 6px', animationDelay: '0.15s' }}>
             ARE STEALING
           </h1>
-          <h1 className="fade-up" style={{ fontFamily: DF, fontWeight: 900, fontSize: 'clamp(54px,7.5vw,108px)', lineHeight: 0.92, letterSpacing: '-1px', color: ORANGE, margin: '0 0 32px', animationDelay: '0.2s' }}>
+          <h1 className="fade-up" style={{ fontFamily: DF, fontWeight: 900, fontSize: 'clamp(54px,7.5vw,108px)', lineHeight: 0.92, letterSpacing: '-1px', color: BLUE, margin: '0 0 32px', animationDelay: '0.2s' }}>
             YOUR CUSTOMERS.
           </h1>
 
           <p className="fade-up" style={{ fontFamily: BF, fontSize: 'clamp(15px,1.6vw,18px)', color: WHITE2, maxWidth: 560, lineHeight: 1.8, margin: '0 0 40px', animationDelay: '0.3s' }}>
             You&apos;ve built a great local business through hard work. But without a website, Google sends every customer straight to your competition.{' '}
-            <strong style={{ color: WHITE, fontWeight: 600 }}>We fix that — and you see the design before paying a dollar.</strong>
+            <strong style={{ color: WHITE, fontWeight: 600 }}>We fix that. You see the design before paying a dollar.</strong>
           </p>
 
           <div className="fade-up" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 52, animationDelay: '0.4s' }}>
             <a href="#contact" style={{
               fontFamily: BF, fontWeight: 700, fontSize: 16,
-              background: ORANGE, color: '#fff',
+              background: BLUE, color: '#fff',
               padding: '18px 36px', borderRadius: 10,
               textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 10,
-              boxShadow: `0 8px 32px ${ORANGE}40`,
+              boxShadow: `0 8px 32px ${BLUE}40`,
               transition: 'all 0.2s',
             }}
-              onMouseEnter={e => { e.currentTarget.style.background = ORANGE2; e.currentTarget.style.transform = 'translateY(-2px)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = ORANGE; e.currentTarget.style.transform = 'translateY(0)' }}>
-              ⚡ Get My FREE Mockup
+              onMouseEnter={e => { e.currentTarget.style.background = BLUE2; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.transform = 'translateY(0)' }}>
+              Get My FREE Mockup
             </a>
-            <a href="#pricing" style={{
-              fontFamily: BF, fontWeight: 600, fontSize: 15,
-              background: 'transparent', color: WHITE2,
+            <a href="#pricing" className="btn-glow" style={{
+              fontFamily: BF, fontWeight: 700, fontSize: 15,
+              background: `${BLUE}18`, color: WHITE,
               padding: '18px 30px', borderRadius: 10,
-              textDecoration: 'none', border: `1px solid ${BORDER2}`,
+              textDecoration: 'none', border: `1px solid ${BLUE}50`,
               transition: 'all 0.2s',
             }}
-              onMouseEnter={e => { e.currentTarget.style.color = WHITE; e.currentTarget.style.borderColor = `${BLUE}50` }}
-              onMouseLeave={e => { e.currentTarget.style.color = WHITE2; e.currentTarget.style.borderColor = BORDER2 }}>
-              View Packages →
+              onMouseEnter={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = `${BLUE}18`; e.currentTarget.style.borderColor = `${BLUE}50`; e.currentTarget.style.transform = 'translateY(0)' }}>
+              View Packages
             </a>
           </div>
 
           {/* Trust strip */}
           <div className="fade-up" style={{ display: 'flex', gap: 20, flexWrap: 'wrap', animationDelay: '0.5s' }}>
-            {[['50+','Michigan Businesses'],['4.9★','Avg Rating'],['3–5 Days','Avg Launch'],['$0','To See Your Mockup']].map(([n, l]) => (
+            {[['50+','Michigan Businesses'],['4.9 ★','Avg Rating'],['Under 5 Days','Avg Launch'],['$0','To See Your Mockup']].map(([n, l]) => (
               <div key={l} style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <div style={{ fontFamily: DF, fontSize: 26, fontWeight: 800, color: WHITE, lineHeight: 1 }}>{n}</div>
                 <div style={{ fontFamily: BF, fontSize: 11, color: MUTED, textTransform: 'uppercase', letterSpacing: 1.5 }}>{l}</div>
@@ -223,7 +258,7 @@ function Hero() {
           </div>
         </div>
 
-        {/* Right: Stat block — desktop only */}
+        {/* Right: Stat block (desktop only) */}
         <div className="hide-tablet" style={{
           background: BG3,
           border: `1px solid ${BORDER}`,
@@ -234,13 +269,15 @@ function Hero() {
           boxShadow: `0 0 60px ${BLUE}18`,
         }}>
           {[
-            { icon: '📞', value: '50+', label: 'Sites Launched' },
-            { icon: '📈', value: '40%',  label: 'Avg Lead Increase' },
-            { icon: '⚡', value: '5 Days', label: 'Avg Delivery' },
-            { icon: '⭐', value: '4.9',  label: 'Client Rating' },
+            { value: '50+', label: 'Sites Launched' },
+            { value: '40%',  label: 'Avg Lead Increase' },
+            { value: '5 Days', label: 'Avg Delivery' },
+            { value: '4.9',  label: 'Client Rating' },
           ].map(s => (
             <div key={s.label} style={{ display: 'flex', alignItems: 'center', gap: 14, paddingBottom: 20, borderBottom: `1px solid ${BORDER2}` }}>
-              <div style={{ fontSize: 24, lineHeight: 1 }}>{s.icon}</div>
+              <div style={{ width: 44, height: 44, borderRadius: 10, background: `${BLUE}12`, border: `1px solid ${BLUE}25`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0 }}>
+                <div style={{ width: 8, height: 8, borderRadius: '50%', background: BLUE, boxShadow: `0 0 10px ${BLUE}80` }} />
+              </div>
               <div>
                 <div style={{ fontFamily: DF, fontSize: 32, fontWeight: 900, color: WHITE, lineHeight: 1 }}>{s.value}</div>
                 <div style={{ fontFamily: BF, fontSize: 12, color: WHITE2, marginTop: 2 }}>{s.label}</div>
@@ -256,7 +293,7 @@ function Hero() {
           }}
             onMouseEnter={e => (e.currentTarget.style.background = BLUE2)}
             onMouseLeave={e => (e.currentTarget.style.background = BLUE)}>
-            Start Free →
+            Start Free
           </a>
         </div>
       </div>
@@ -290,39 +327,43 @@ function Problem() {
     { bad: true,  text: 'No way to showcase your Google reviews and reputation' },
     { bad: true,  text: 'Customers can\'t find your phone number after hours' },
     { bad: true,  text: 'Competitors with basic sites are outranking and outearning you' },
-    { bad: false, text: 'Future Media fixes ALL of this — guaranteed' },
+    { bad: false, text: 'Future Media fixes ALL of this, guaranteed' },
   ]
   return (
     <section style={{ padding: '120px 32px', maxWidth: 1200, margin: '0 auto' }}>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(340px,1fr))', gap: 64, alignItems: 'center' }}>
-        <div>
-          <SectionLabel align="left">The Problem</SectionLabel>
-          <h2 style={{ fontFamily: DF, fontSize: 'clamp(40px,5.5vw,72px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 24px' }}>
-            RIGHT NOW, SOMEONE IS GOOGLING{' '}
-            <span style={{ color: BLUE }}>&ldquo;PLUMBER NEAR ME&rdquo;</span>{' '}
-            AND CALLING YOUR COMPETITOR.
-          </h2>
-          <p style={{ fontFamily: BF, color: WHITE2, lineHeight: 1.85, fontSize: 16, margin: '0 0 16px' }}>
-            You&apos;ve earned your reputation through years of hard work. But reputation doesn&apos;t show up on Google. Websites do. Every day without one is customers, jobs, and money walking straight to whoever has a better-looking site.
-          </p>
-          <p style={{ fontFamily: BF, color: WHITE2, lineHeight: 1.85, fontSize: 16 }}>
-            Most of your competitors have terrible websites or none at all. We build sites that dominate local search and make you the obvious, trusted choice.
-          </p>
-        </div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-          {items.map(({ bad, text }) => (
-            <div key={text} style={{
-              background: bad ? 'rgba(239,68,68,0.04)' : `${BLUE}08`,
-              border: `1px solid ${bad ? 'rgba(239,68,68,0.2)' : `${BLUE}30`}`,
-              borderRadius: 10, padding: '16px 20px',
-              display: 'flex', alignItems: 'flex-start', gap: 14,
-              transition: 'border-color 0.2s',
-            }}>
-              <span style={{ fontSize: 16, flexShrink: 0, color: bad ? RED : BLUE, fontWeight: 900, marginTop: 1 }}>{bad ? '✗' : '✓'}</span>
-              <span style={{ fontFamily: BF, color: bad ? '#fca5a5' : WHITE, fontSize: 15, lineHeight: 1.55, fontWeight: bad ? 400 : 700 }}>{text}</span>
-            </div>
-          ))}
-        </div>
+        <Reveal direction="left">
+          <div>
+            <SectionLabel align="left">The Problem</SectionLabel>
+            <h2 style={{ fontFamily: DF, fontSize: 'clamp(40px,5.5vw,72px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 24px' }}>
+              RIGHT NOW, SOMEONE IS GOOGLING{' '}
+              <span style={{ color: BLUE }}>&ldquo;PLUMBER NEAR ME&rdquo;</span>{' '}
+              AND CALLING YOUR COMPETITOR.
+            </h2>
+            <p style={{ fontFamily: BF, color: WHITE2, lineHeight: 1.85, fontSize: 16, margin: '0 0 16px' }}>
+              You&apos;ve earned your reputation through years of hard work. But reputation doesn&apos;t show up on Google. Websites do. Every day without one is customers, jobs, and money walking straight to whoever has a better looking site.
+            </p>
+            <p style={{ fontFamily: BF, color: WHITE2, lineHeight: 1.85, fontSize: 16 }}>
+              Most of your competitors have terrible websites or none at all. We build sites that dominate local search and make you the obvious, trusted choice.
+            </p>
+          </div>
+        </Reveal>
+        <Reveal direction="right" delay={0.15}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
+            {items.map(({ bad, text }) => (
+              <div key={text} style={{
+                background: bad ? 'rgba(239,68,68,0.04)' : `${BLUE}08`,
+                border: `1px solid ${bad ? 'rgba(239,68,68,0.2)' : `${BLUE}30`}`,
+                borderRadius: 10, padding: '16px 20px',
+                display: 'flex', alignItems: 'flex-start', gap: 14,
+                transition: 'border-color 0.2s',
+              }}>
+                <span style={{ fontSize: 16, flexShrink: 0, color: bad ? RED : BLUE, fontWeight: 900, marginTop: 1 }}>{bad ? '✗' : '✓'}</span>
+                <span style={{ fontFamily: BF, color: bad ? '#fca5a5' : WHITE, fontSize: 15, lineHeight: 1.55, fontWeight: bad ? 400 : 700 }}>{text}</span>
+              </div>
+            ))}
+          </div>
+        </Reveal>
       </div>
     </section>
   )
@@ -333,18 +374,22 @@ function Services() {
   return (
     <section id="services" style={{ padding: '80px 32px', background: BG2, borderTop: `1px solid ${BORDER2}`, borderBottom: `1px solid ${BORDER2}` }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        <div style={{ marginBottom: 52 }}>
-          <SectionLabel>What We Do</SectionLabel>
-          <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,66px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 12px', textAlign: 'center' }}>
-            EVERYTHING YOU NEED TO WIN ONLINE
-          </h2>
-          <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16, maxWidth: 480, margin: '0 auto', textAlign: 'center' }}>
-            One studio, everything handled. No freelancers to manage, no tech headaches.
-          </p>
-        </div>
+        <Reveal>
+          <div style={{ marginBottom: 52 }}>
+            <SectionLabel>What We Do</SectionLabel>
+            <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,66px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 12px', textAlign: 'center' }}>
+              EVERYTHING YOU NEED TO WIN ONLINE
+            </h2>
+            <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16, maxWidth: 480, margin: '0 auto', textAlign: 'center' }}>
+              One studio, everything handled. No freelancers to manage, no tech headaches.
+            </p>
+          </div>
+        </Reveal>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(260px,1fr))', gap: 16 }}>
           {SERVICES.map((s, i) => (
-            <ServiceCard key={s.title} s={s} idx={i} />
+            <Reveal key={s.title} delay={i * 0.1}>
+              <ServiceCard s={s} idx={i} />
+            </Reveal>
           ))}
         </div>
       </div>
@@ -365,8 +410,11 @@ function ServiceCard({ s, idx }: { s: typeof SERVICES[0]; idx: number }) {
         boxShadow: hov ? `0 0 40px ${BLUE}15` : 'none',
         transition: 'all 0.25s ease',
         transform: hov ? 'translateY(-3px)' : 'none',
+        height: '100%',
       }}>
-      <div style={{ fontSize: 36, marginBottom: 18 }}>{s.icon}</div>
+      <div style={{ fontFamily: DF, fontSize: 52, fontWeight: 900, color: `${BLUE}15`, lineHeight: 1, marginBottom: 14 }}>
+        {String(idx + 1).padStart(2, '0')}
+      </div>
       <div style={{ marginBottom: 12 }}>
         <span style={{
           fontFamily: BF, fontSize: 10, fontWeight: 700,
@@ -376,7 +424,7 @@ function ServiceCard({ s, idx }: { s: typeof SERVICES[0]; idx: number }) {
           background: isFree ? `${GREEN}10` : `${BLUE}0d`,
           padding: '3px 10px', borderRadius: 100, display: 'inline-block',
         }}>
-          {isFree && <span style={{ marginRight: 5 }}>●</span>}{s.tag}
+          {s.tag}
         </span>
       </div>
       <h3 style={{ fontFamily: DF, fontSize: 26, fontWeight: 800, color: WHITE, margin: '0 0 10px', letterSpacing: '-0.3px' }}>{s.title}</h3>
@@ -390,49 +438,54 @@ function HowItWorks() {
   return (
     <section id="how" style={{ padding: '110px 32px' }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 64 }}>
-          <SectionLabel>The Process</SectionLabel>
-          <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,66px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 12px' }}>
-            FROM ZERO TO GOOGLE IN 3 STEPS
-          </h2>
-          <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16 }}>We&apos;ve made it completely risk-free to get started.</p>
-        </div>
+        <Reveal>
+          <div style={{ textAlign: 'center', marginBottom: 64 }}>
+            <SectionLabel>The Process</SectionLabel>
+            <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,66px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 12px' }}>
+              FROM ZERO TO GOOGLE IN 3 STEPS
+            </h2>
+            <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16 }}>We&apos;ve made it completely risk free to get started.</p>
+          </div>
+        </Reveal>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: 2 }}>
           {STEPS.map(({ n, title, desc }, i) => (
-            <div key={n} style={{
-              padding: '40px 36px',
-              background: BG3, border: `1px solid ${BORDER2}`,
-              borderRadius: i === 0 ? '14px 2px 2px 14px' : i === 2 ? '2px 14px 14px 2px' : 2,
-              position: 'relative',
-            }}>
-              {/* connector arrow */}
-              {i < 2 && (
-                <div className="hide-mobile" style={{
-                  position: 'absolute', right: -12, top: '50%', transform: 'translateY(-50%)',
-                  width: 24, height: 24, background: BLUE, borderRadius: '50%',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  fontSize: 12, color: '#fff', zIndex: 2,
-                }}>→</div>
-              )}
-              <div style={{ fontFamily: DF, fontSize: 72, fontWeight: 900, color: `${BLUE}20`, lineHeight: 1, marginBottom: 16 }}>{n}</div>
-              <h3 style={{ fontFamily: DF, fontSize: 28, fontWeight: 800, color: WHITE, margin: '0 0 12px', letterSpacing: '-0.3px' }}>{title}</h3>
-              <p style={{ fontFamily: BF, color: WHITE2, fontSize: 15, lineHeight: 1.8, margin: 0 }}>{desc}</p>
-            </div>
+            <Reveal key={n} delay={i * 0.12}>
+              <div style={{
+                padding: '40px 36px',
+                background: BG3, border: `1px solid ${BORDER2}`,
+                borderRadius: i === 0 ? '14px 2px 2px 14px' : i === 2 ? '2px 14px 14px 2px' : 2,
+                position: 'relative', height: '100%',
+              }}>
+                {i < 2 && (
+                  <div className="hide-mobile" style={{
+                    position: 'absolute', right: -12, top: '50%', transform: 'translateY(-50%)',
+                    width: 24, height: 24, background: BLUE, borderRadius: '50%',
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    fontSize: 12, color: '#fff', zIndex: 2,
+                  }}>→</div>
+                )}
+                <div style={{ fontFamily: DF, fontSize: 72, fontWeight: 900, color: `${BLUE}20`, lineHeight: 1, marginBottom: 16 }}>{n}</div>
+                <h3 style={{ fontFamily: DF, fontSize: 28, fontWeight: 800, color: WHITE, margin: '0 0 12px', letterSpacing: '-0.3px' }}>{title}</h3>
+                <p style={{ fontFamily: BF, color: WHITE2, fontSize: 15, lineHeight: 1.8, margin: 0 }}>{desc}</p>
+              </div>
+            </Reveal>
           ))}
         </div>
-        <div style={{ textAlign: 'center', marginTop: 44 }}>
-          <a href="#contact" style={{
-            fontFamily: BF, fontWeight: 700, fontSize: 16,
-            background: BLUE, color: '#fff',
-            padding: '18px 40px', borderRadius: 10,
-            textDecoration: 'none', display: 'inline-block',
-            transition: 'all 0.2s',
-          }}
-            onMouseEnter={e => { e.currentTarget.style.background = BLUE2; e.currentTarget.style.transform = 'translateY(-2px)' }}
-            onMouseLeave={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.transform = 'translateY(0)' }}>
-            Start With a Free Mockup →
-          </a>
-        </div>
+        <Reveal delay={0.3}>
+          <div style={{ textAlign: 'center', marginTop: 44 }}>
+            <a href="#contact" style={{
+              fontFamily: BF, fontWeight: 700, fontSize: 16,
+              background: BLUE, color: '#fff',
+              padding: '18px 40px', borderRadius: 10,
+              textDecoration: 'none', display: 'inline-block',
+              transition: 'all 0.2s',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.background = BLUE2; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.transform = 'translateY(0)' }}>
+              Start With a Free Mockup
+            </a>
+          </div>
+        </Reveal>
       </div>
     </section>
   )
@@ -468,10 +521,10 @@ function Stats() {
   }
 
   const items = [
-    { n: 50, s: '+',      label: 'Michigan Businesses', sub: 'Sites Launched' },
-    { n: 4,  s: '.9 ★',  label: 'Average Rating',       sub: 'From Real Clients' },
-    { n: 3,  s: '–5 Days',label: 'Average Launch',       sub: 'Faster Than Anyone' },
-    { n: 100,s: '%',      label: 'Satisfaction Rate',    sub: 'Or We Fix It Free' },
+    { n: 50, s: '+',        label: 'Michigan Businesses', sub: 'Sites Launched' },
+    { n: 4,  s: '.9 ★',    label: 'Average Rating',       sub: 'From Real Clients' },
+    { n: 5,  s: ' Days',   label: 'Average Launch',       sub: 'Faster Than Anyone' },
+    { n: 100,s: '%',        label: 'Satisfaction Rate',    sub: 'Or We Fix It Free' },
   ]
 
   return (
@@ -499,19 +552,23 @@ function Testimonials() {
   return (
     <section id="reviews" style={{ padding: '110px 32px' }}>
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 60 }}>
-          <SectionLabel>Real Results</SectionLabel>
-          <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,66px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 16px' }}>
-            MICHIGAN BUSINESS OWNERS LOVE US
-          </h2>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
-            <Stars size={18} />
-            <span style={{ fontFamily: BF, color: WHITE2, fontSize: 15 }}>4.9 average · 50+ clients served across Michigan</span>
+        <Reveal>
+          <div style={{ textAlign: 'center', marginBottom: 60 }}>
+            <SectionLabel>Real Results</SectionLabel>
+            <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,66px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 16px' }}>
+              MICHIGAN BUSINESS OWNERS LOVE US
+            </h2>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 10 }}>
+              <Stars size={18} />
+              <span style={{ fontFamily: BF, color: WHITE2, fontSize: 15 }}>4.9 average from 50+ clients served across Michigan</span>
+            </div>
           </div>
-        </div>
+        </Reveal>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(320px,1fr))', gap: 16 }}>
-          {TESTIMONIALS.map(t => (
-            <TestimonialCard key={t.name} t={t} />
+          {TESTIMONIALS.map((t, i) => (
+            <Reveal key={t.name} delay={i * 0.08}>
+              <TestimonialCard t={t} />
+            </Reveal>
           ))}
         </div>
       </div>
@@ -530,10 +587,10 @@ function TestimonialCard({ t }: { t: typeof TESTIMONIALS[0] }) {
         border: `1px solid ${hov ? `${BLUE}40` : BORDER2}`,
         transition: 'all 0.25s',
         transform: hov ? 'translateY(-2px)' : 'none',
+        height: '100%',
       }}>
-      {/* Result badge */}
       <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${GREEN}12`, border: `1px solid ${GREEN}30`, borderRadius: 8, padding: '4px 12px', fontSize: 11, fontFamily: BF, color: '#86efac', fontWeight: 700, marginBottom: 14 }}>
-        📈 {t.result}
+        {t.result}
       </div>
       <Stars />
       <p style={{ fontFamily: BF, color: WHITE2, fontSize: 14, lineHeight: 1.85, margin: '14px 0 22px', fontStyle: 'italic' }}>&ldquo;{t.text}&rdquo;</p>
@@ -545,9 +602,9 @@ function TestimonialCard({ t }: { t: typeof TESTIMONIALS[0] }) {
         }}>{t.init}</div>
         <div>
           <div style={{ fontFamily: BF, fontWeight: 700, color: WHITE, fontSize: 14 }}>{t.name}</div>
-          <div style={{ fontFamily: BF, color: MUTED, fontSize: 12 }}>{t.biz} · {t.city}, MI</div>
+          <div style={{ fontFamily: BF, color: MUTED, fontSize: 12 }}>{t.biz}, {t.city} MI</div>
         </div>
-        <div style={{ marginLeft: 'auto', background: `${BLUE}10`, border: `1px solid ${BORDER}`, borderRadius: 6, padding: '3px 8px', fontSize: 10, fontFamily: BF, color: BLUE, fontWeight: 700, whiteSpace: 'nowrap' }}>✓ Verified</div>
+        <div style={{ marginLeft: 'auto', background: `${BLUE}10`, border: `1px solid ${BORDER}`, borderRadius: 6, padding: '3px 8px', fontSize: 10, fontFamily: BF, color: BLUE, fontWeight: 700, whiteSpace: 'nowrap' }}>Verified</div>
       </div>
     </div>
   )
@@ -558,21 +615,43 @@ function Pricing() {
   return (
     <section id="pricing" style={{ padding: '110px 32px', background: BG2, borderTop: `1px solid ${BORDER2}`, borderBottom: `1px solid ${BORDER2}` }}>
       <div style={{ maxWidth: 1100, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 44 }}>
-          <SectionLabel>Pricing</SectionLabel>
-          <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,66px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 12px' }}>
-            TRANSPARENT PRICING. NO SURPRISES.
-          </h2>
-          <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16 }}>Every package starts with a free mockup. You don&apos;t pay until you love the design.</p>
-        </div>
-
+        <Reveal>
+          <div style={{ textAlign: 'center', marginBottom: 44 }}>
+            <SectionLabel>Pricing</SectionLabel>
+            <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,66px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 12px' }}>
+              TRANSPARENT PRICING. NO SURPRISES.
+            </h2>
+            <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16 }}>Every package starts with a free mockup. You don&apos;t pay until you love the design.</p>
+          </div>
+        </Reveal>
 
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: 16, alignItems: 'start' }}>
-          {PRICING.map(p => <PricingCard key={p.name} p={p} />)}
+          {PRICING.map((p, i) => (
+            <Reveal key={p.name} delay={i * 0.1}>
+              <PricingCard p={p} />
+            </Reveal>
+          ))}
         </div>
-        <p style={{ fontFamily: BF, textAlign: 'center', color: MUTED, fontSize: 14, marginTop: 28 }}>
-          Not sure which package? Start with a free mockup and we&apos;ll recommend the right fit.
-        </p>
+
+        <Reveal delay={0.3}>
+          <div style={{ textAlign: 'center', marginTop: 36 }}>
+            <a href="#contact" style={{
+              fontFamily: BF, fontWeight: 700, fontSize: 16,
+              background: `${BLUE}15`, color: WHITE,
+              padding: '18px 40px', borderRadius: 10,
+              textDecoration: 'none', display: 'inline-block',
+              border: `1px solid ${BLUE}40`,
+              transition: 'all 0.2s',
+            }}
+              onMouseEnter={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.transform = 'translateY(-2px)' }}
+              onMouseLeave={e => { e.currentTarget.style.background = `${BLUE}15`; e.currentTarget.style.borderColor = `${BLUE}40`; e.currentTarget.style.transform = 'translateY(0)' }}>
+              Not Sure? Get a Free Mockup First
+            </a>
+          </div>
+          <p style={{ fontFamily: BF, textAlign: 'center', color: MUTED, fontSize: 14, marginTop: 20 }}>
+            Not sure which package? Start with a free mockup and we&apos;ll recommend the right fit.
+          </p>
+        </Reveal>
       </div>
     </section>
   )
@@ -610,17 +689,17 @@ function PricingCard({ p }: { p: typeof PRICING[0] }) {
           </li>
         ))}
       </ul>
-      <a href="#contact" style={{
+      <a href={p.stripe} target="_blank" rel="noopener noreferrer" style={{
         display: 'block', textAlign: 'center', padding: '15px',
         borderRadius: 10, fontFamily: BF, fontWeight: 700, fontSize: 15, textDecoration: 'none',
-        background: p.hot ? BLUE : 'transparent',
-        color: p.hot ? '#fff' : WHITE,
-        border: p.hot ? 'none' : `1px solid ${BORDER2}`,
+        background: p.hot ? BLUE : `${BLUE}15`,
+        color: '#fff',
+        border: p.hot ? 'none' : `1px solid ${BLUE}40`,
         transition: 'all 0.2s',
       }}
-        onMouseEnter={e => { if (p.hot) e.currentTarget.style.background = BLUE2 }}
-        onMouseLeave={e => { if (p.hot) e.currentTarget.style.background = BLUE }}>
-        {p.cta}
+        onMouseEnter={e => { e.currentTarget.style.background = p.hot ? BLUE2 : BLUE; e.currentTarget.style.transform = 'translateY(-1px)' }}
+        onMouseLeave={e => { e.currentTarget.style.background = p.hot ? BLUE : `${BLUE}15`; e.currentTarget.style.transform = 'translateY(0)' }}>
+        Buy Now
       </a>
     </div>
   )
@@ -631,31 +710,40 @@ function FAQ() {
   const [open, setOpen] = useState<number | null>(null)
   return (
     <section style={{ padding: '100px 32px', maxWidth: 780, margin: '0 auto' }}>
-      <div style={{ textAlign: 'center', marginBottom: 52 }}>
-        <SectionLabel>FAQ</SectionLabel>
-        <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,60px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 0' }}>
-          COMMON QUESTIONS
-        </h2>
-      </div>
+      <Reveal>
+        <div style={{ textAlign: 'center', marginBottom: 52 }}>
+          <SectionLabel>FAQ</SectionLabel>
+          <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,60px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 0' }}>
+            COMMON QUESTIONS
+          </h2>
+        </div>
+      </Reveal>
       <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
         {FAQS.map((f, i) => (
-          <div key={i} style={{
-            background: BG3, border: `1px solid ${open === i ? `${BLUE}50` : BORDER2}`,
-            borderRadius: 12, overflow: 'hidden', transition: 'border-color 0.2s',
-          }}>
-            <button onClick={() => setOpen(open === i ? null : i)} style={{
-              width: '100%', padding: '20px 24px',
-              background: 'none', border: 'none', color: WHITE,
-              fontFamily: BF, fontSize: 15, fontWeight: 600, textAlign: 'left',
-              cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12,
+          <Reveal key={i} delay={i * 0.06}>
+            <div style={{
+              background: BG3, border: `1px solid ${open === i ? `${BLUE}50` : BORDER2}`,
+              borderRadius: 12, overflow: 'hidden', transition: 'border-color 0.2s',
             }}>
-              {f.q}
-              <span style={{ color: BLUE, fontSize: 22, lineHeight: 1, flexShrink: 0, display: 'inline-block', transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.25s ease' }}>+</span>
-            </button>
-            {open === i && (
-              <div style={{ padding: '0 24px 20px', fontFamily: BF, color: WHITE2, fontSize: 15, lineHeight: 1.85 }}>{f.a}</div>
-            )}
-          </div>
+              <button onClick={() => setOpen(open === i ? null : i)} style={{
+                width: '100%', padding: '20px 24px',
+                background: 'none', border: 'none', color: WHITE,
+                fontFamily: BF, fontSize: 15, fontWeight: 600, textAlign: 'left',
+                cursor: 'pointer', display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 12,
+              }}>
+                {f.q}
+                <span style={{ color: BLUE, fontSize: 22, lineHeight: 1, flexShrink: 0, display: 'inline-block', transform: open === i ? 'rotate(45deg)' : 'none', transition: 'transform 0.25s ease' }}>+</span>
+              </button>
+              <div style={{
+                maxHeight: open === i ? 300 : 0,
+                overflow: 'hidden',
+                transition: 'max-height 0.35s ease, padding 0.35s ease',
+                padding: open === i ? '0 24px 20px' : '0 24px 0',
+              }}>
+                <div style={{ fontFamily: BF, color: WHITE2, fontSize: 15, lineHeight: 1.85 }}>{f.a}</div>
+              </div>
+            </div>
+          </Reveal>
         ))}
       </div>
     </section>
@@ -686,80 +774,86 @@ function Contact() {
   return (
     <section id="contact" style={{ padding: '110px 32px', background: BG2, borderTop: `1px solid ${BORDER2}` }}>
       <div style={{ maxWidth: 640, margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: 48 }}>
-          <Tag color={GREEN}>Free Mockup. Zero Risk.</Tag>
-          <h2 style={{ fontFamily: DF, fontSize: 'clamp(40px,5.5vw,72px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '18px 0 16px' }}>
-            READY TO START GETTING MORE CUSTOMERS?
-          </h2>
-          <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16, lineHeight: 1.8 }}>
-            Drop your info below. We&apos;ll build a real mockup of your new website completely free and reach out within 24 hours. No payment, no pressure.
-          </p>
-        </div>
+        <Reveal>
+          <div style={{ textAlign: 'center', marginBottom: 48 }}>
+            <Tag color={GREEN}>Free Mockup. Zero Risk.</Tag>
+            <h2 style={{ fontFamily: DF, fontSize: 'clamp(40px,5.5vw,72px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '18px 0 16px' }}>
+              READY TO START GETTING MORE CUSTOMERS?
+            </h2>
+            <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16, lineHeight: 1.8 }}>
+              Drop your info below. We&apos;ll build a real mockup of your new website completely free and reach out within 24 hours. No payment, no pressure.
+            </p>
+          </div>
+        </Reveal>
 
-        {submitted ? (
-          <div style={{ background: BG3, border: `1px solid ${GREEN}40`, borderRadius: 16, padding: '56px 36px', textAlign: 'center' }}>
-            <div style={{ fontSize: 56, marginBottom: 20 }}>✅</div>
-            <div style={{ fontFamily: DF, fontSize: 32, fontWeight: 900, color: WHITE, marginBottom: 14 }}>GOT IT!</div>
-            <div style={{ fontFamily: BF, color: WHITE2, fontSize: 16, lineHeight: 1.85, maxWidth: 400, margin: '0 auto 28px' }}>
-              We&apos;ll have your free mockup ready within 24 hours. Check your phone — Sam will be in touch.
+        <Reveal delay={0.15}>
+          {submitted ? (
+            <div style={{ background: BG3, border: `1px solid ${GREEN}40`, borderRadius: 16, padding: '56px 36px', textAlign: 'center' }}>
+              <div style={{ width: 64, height: 64, borderRadius: '50%', background: `${GREEN}15`, border: `2px solid ${GREEN}40`, display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 20px' }}>
+                <span style={{ color: GREEN, fontSize: 28, fontWeight: 900 }}>✓</span>
+              </div>
+              <div style={{ fontFamily: DF, fontSize: 32, fontWeight: 900, color: WHITE, marginBottom: 14 }}>GOT IT!</div>
+              <div style={{ fontFamily: BF, color: WHITE2, fontSize: 16, lineHeight: 1.85, maxWidth: 400, margin: '0 auto 28px' }}>
+                We&apos;ll have your free mockup ready within 24 hours. Check your phone, Sam will be in touch.
+              </div>
+              <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: `${GREEN}10`, border: `1px solid ${GREEN}30`, borderRadius: 12, padding: '14px 24px', fontFamily: BF, fontSize: 14, color: '#86efac', fontWeight: 700 }}>
+                <span style={{ fontSize: 18 }}>✓</span> Request received, we&apos;ll be in touch soon
+              </div>
             </div>
-            <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: `${GREEN}10`, border: `1px solid ${GREEN}30`, borderRadius: 12, padding: '14px 24px', fontFamily: BF, fontSize: 14, color: '#86efac', fontWeight: 700 }}>
-              <span style={{ fontSize: 18 }}>✓</span> Request received — we&apos;ll be in touch soon
-            </div>
-          </div>
-        ) : (
-          <div style={{ background: BG3, border: `1px solid ${BORDER}`, borderRadius: 16, padding: 40 }}>
-            <form action="https://formspree.io/f/xgopolbd" method="POST" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-              <input type="hidden" name="_subject" value="New Free Mockup Request — Future Media" />
-              <input type="hidden" name="_next" value="https://futuremedia-website.vercel.app/?submitted=true" />
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 14 }}>
-                <div>
-                  <label style={{ fontFamily: BF, fontSize: 11, color: WHITE2, fontWeight: 700, display: 'block', marginBottom: 7, textTransform: 'uppercase', letterSpacing: 1 }}>Your Name *</label>
-                  <input required name="name" placeholder="John Smith" style={inp} />
+          ) : (
+            <div style={{ background: BG3, border: `1px solid ${BORDER}`, borderRadius: 16, padding: 40 }}>
+              <form action="https://formspree.io/f/xgopolbd" method="POST" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                <input type="hidden" name="_subject" value="New Free Mockup Request — Future Media" />
+                <input type="hidden" name="_next" value="https://futuremediawebdesign.com/?submitted=true" />
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 14 }}>
+                  <div>
+                    <label style={{ fontFamily: BF, fontSize: 11, color: WHITE2, fontWeight: 700, display: 'block', marginBottom: 7, textTransform: 'uppercase', letterSpacing: 1 }}>Your Name *</label>
+                    <input required name="name" placeholder="John Smith" style={inp} />
+                  </div>
+                  <div>
+                    <label style={{ fontFamily: BF, fontSize: 11, color: WHITE2, fontWeight: 700, display: 'block', marginBottom: 7, textTransform: 'uppercase', letterSpacing: 1 }}>Phone Number *</label>
+                    <input required name="phone" placeholder="(313) 555-0100" type="tel" style={inp} />
+                  </div>
                 </div>
                 <div>
-                  <label style={{ fontFamily: BF, fontSize: 11, color: WHITE2, fontWeight: 700, display: 'block', marginBottom: 7, textTransform: 'uppercase', letterSpacing: 1 }}>Phone Number *</label>
-                  <input required name="phone" placeholder="(313) 555-0100" type="tel" style={inp} />
+                  <label style={{ fontFamily: BF, fontSize: 11, color: WHITE2, fontWeight: 700, display: 'block', marginBottom: 7, textTransform: 'uppercase', letterSpacing: 1 }}>Email Address *</label>
+                  <input required name="email" placeholder="john@smithplumbing.com" type="email" style={inp} />
                 </div>
-              </div>
-              <div>
-                <label style={{ fontFamily: BF, fontSize: 11, color: WHITE2, fontWeight: 700, display: 'block', marginBottom: 7, textTransform: 'uppercase', letterSpacing: 1 }}>Email Address *</label>
-                <input required name="email" placeholder="john@smithplumbing.com" type="email" style={inp} />
-              </div>
-              <div>
-                <label style={{ fontFamily: BF, fontSize: 11, color: WHITE2, fontWeight: 700, display: 'block', marginBottom: 7, textTransform: 'uppercase', letterSpacing: 1 }}>Business Name *</label>
-                <input required name="business_name" placeholder="Smith Plumbing LLC" style={inp} />
-              </div>
-              <div>
-                <label style={{ fontFamily: BF, fontSize: 11, color: WHITE2, fontWeight: 700, display: 'block', marginBottom: 7, textTransform: 'uppercase', letterSpacing: 1 }}>Type of Business *</label>
-                <input required name="business_type" placeholder="e.g. Plumber, Electrician, HVAC, Roofer..." style={inp} />
-              </div>
-              <button
-                type="submit"
-                onMouseEnter={() => setBtnHov(true)}
-                onMouseLeave={() => setBtnHov(false)}
-                style={{
-                  marginTop: 8,
-                  background: btnHov ? ORANGE2 : ORANGE,
-                  border: 'none', borderRadius: 12,
-                  color: '#fff', fontFamily: DF, fontSize: 22, fontWeight: 900,
-                  letterSpacing: 0.5, padding: '20px', cursor: 'pointer',
-                  boxShadow: btnHov ? `0 0 60px ${ORANGE}50` : `0 0 40px ${ORANGE}30`,
-                  transform: btnHov ? 'translateY(-2px)' : 'none',
-                  transition: 'all 0.2s ease',
-                }}>
-                SEND ME MY FREE MOCKUP →
-              </button>
-              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, marginTop: 4, flexWrap: 'wrap' }}>
-                {['No payment required', 'No spam, ever', '24-hour response'].map(t => (
-                  <span key={t} style={{ fontFamily: BF, fontSize: 12, color: MUTED, display: 'flex', alignItems: 'center', gap: 5 }}>
-                    <span style={{ color: GREEN, fontSize: 11, fontWeight: 800 }}>✓</span> {t}
-                  </span>
-                ))}
-              </div>
-            </form>
-          </div>
-        )}
+                <div>
+                  <label style={{ fontFamily: BF, fontSize: 11, color: WHITE2, fontWeight: 700, display: 'block', marginBottom: 7, textTransform: 'uppercase', letterSpacing: 1 }}>Business Name *</label>
+                  <input required name="business_name" placeholder="Smith Plumbing LLC" style={inp} />
+                </div>
+                <div>
+                  <label style={{ fontFamily: BF, fontSize: 11, color: WHITE2, fontWeight: 700, display: 'block', marginBottom: 7, textTransform: 'uppercase', letterSpacing: 1 }}>Type of Business *</label>
+                  <input required name="business_type" placeholder="e.g. Plumber, Electrician, HVAC, Roofer..." style={inp} />
+                </div>
+                <button
+                  type="submit"
+                  onMouseEnter={() => setBtnHov(true)}
+                  onMouseLeave={() => setBtnHov(false)}
+                  style={{
+                    marginTop: 8,
+                    background: btnHov ? BLUE2 : BLUE,
+                    border: 'none', borderRadius: 12,
+                    color: '#fff', fontFamily: DF, fontSize: 22, fontWeight: 900,
+                    letterSpacing: 0.5, padding: '20px', cursor: 'pointer',
+                    boxShadow: btnHov ? `0 0 60px ${BLUE}50` : `0 0 40px ${BLUE}30`,
+                    transform: btnHov ? 'translateY(-2px)' : 'none',
+                    transition: 'all 0.2s ease',
+                  }}>
+                  SEND ME MY FREE MOCKUP
+                </button>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, marginTop: 4, flexWrap: 'wrap' }}>
+                  {['No payment required', 'No spam, ever', '24 hour response'].map(t => (
+                    <span key={t} style={{ fontFamily: BF, fontSize: 12, color: MUTED, display: 'flex', alignItems: 'center', gap: 5 }}>
+                      <span style={{ color: GREEN, fontSize: 11, fontWeight: 800 }}>✓</span> {t}
+                    </span>
+                  ))}
+                </div>
+              </form>
+            </div>
+          )}
+        </Reveal>
       </div>
     </section>
   )
@@ -767,23 +861,59 @@ function Contact() {
 
 // ─── FOOTER ───────────────────────────────────────────────────────────
 function Footer() {
+  const [toast, setToast] = useState(false)
+
+  const copyEmail = (e: React.MouseEvent) => {
+    e.preventDefault()
+    navigator.clipboard.writeText('futuremediasam313@gmail.com').then(() => {
+      setToast(true)
+      setTimeout(() => setToast(false), 2500)
+    })
+  }
+
   return (
-    <footer style={{ borderTop: `1px solid ${BORDER2}`, padding: '56px 32px 32px', background: '#030408' }}>
+    <footer style={{ borderTop: `1px solid ${BORDER2}`, padding: '56px 32px 32px', background: '#030408', position: 'relative' }}>
+      {/* Toast notification */}
+      <div style={{
+        position: 'fixed',
+        bottom: toast ? 32 : -80,
+        left: '50%',
+        transform: 'translateX(-50%)',
+        background: '#1a1d35',
+        border: `1px solid ${BLUE}40`,
+        color: WHITE,
+        fontFamily: BF,
+        fontSize: 14,
+        fontWeight: 600,
+        padding: '14px 28px',
+        borderRadius: 12,
+        zIndex: 9999,
+        transition: 'bottom 0.35s cubic-bezier(0.22,1,0.36,1)',
+        boxShadow: `0 8px 32px rgba(0,0,0,0.5), 0 0 20px ${BLUE}20`,
+        whiteSpace: 'nowrap',
+      }}>
+        Email copied to clipboard
+      </div>
+
       <div style={{ maxWidth: 1200, margin: '0 auto' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(220px,1fr))', gap: 48, marginBottom: 48 }}>
           <div style={{ maxWidth: 300 }}>
             <div style={{ fontFamily: DF, fontWeight: 900, fontSize: 28, letterSpacing: '-0.5px', color: WHITE, lineHeight: 1, marginBottom: 16 }}>
               FUTURE <span style={{ color: BLUE }}>MEDIA</span>
             </div>
-            <p style={{ fontFamily: BF, color: MUTED, fontSize: 14, lineHeight: 1.8, marginBottom: 20 }}>
-              Michigan&apos;s web design studio for local tradespeople and small businesses. We build sites that rank and convert — fast.
+            <p style={{ fontFamily: BF, color: WHITE2, fontSize: 14, lineHeight: 1.8, marginBottom: 20 }}>
+              Michigan&apos;s web design studio for local tradespeople and small businesses. We build sites that rank and convert, fast.
             </p>
             <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
-              <a href="mailto:futuremediasam313@gmail.com" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${BLUE}10`, border: `1px solid ${BORDER}`, color: BLUE, fontFamily: BF, fontSize: 12, fontWeight: 600, padding: '8px 14px', borderRadius: 8, textDecoration: 'none' }}>
-                📧 Email Us
-              </a>
-              <a href="#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: ORANGE, color: '#fff', fontFamily: BF, fontSize: 12, fontWeight: 700, padding: '8px 14px', borderRadius: 8, textDecoration: 'none' }}>
-                Free Mockup →
+              <button onClick={copyEmail} style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: `${BLUE}10`, border: `1px solid ${BORDER}`, color: BLUE, fontFamily: BF, fontSize: 12, fontWeight: 600, padding: '8px 14px', borderRadius: 8, cursor: 'pointer', transition: 'all 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.background = `${BLUE}20`; e.currentTarget.style.borderColor = `${BLUE}40` }}
+                onMouseLeave={e => { e.currentTarget.style.background = `${BLUE}10`; e.currentTarget.style.borderColor = BORDER }}>
+                Email Us
+              </button>
+              <a href="#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: BLUE, color: '#fff', fontFamily: BF, fontSize: 12, fontWeight: 700, padding: '8px 14px', borderRadius: 8, textDecoration: 'none', transition: 'background 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.background = BLUE2)}
+                onMouseLeave={e => (e.currentTarget.style.background = BLUE)}>
+                Free Mockup
               </a>
             </div>
           </div>
@@ -800,18 +930,22 @@ function Footer() {
           <div>
             <div style={{ fontFamily: BF, color: WHITE, fontWeight: 700, fontSize: 11, marginBottom: 18, letterSpacing: 2, textTransform: 'uppercase' }}>Contact</div>
             <div style={{ fontFamily: BF, fontSize: 14, marginBottom: 12 }}>
-              <a href="mailto:futuremediasam313@gmail.com" style={{ color: MUTED, textDecoration: 'none' }}>📧 futuremediasam313@gmail.com</a>
+              <button onClick={copyEmail} style={{ background: 'none', border: 'none', padding: 0, fontFamily: BF, color: MUTED, fontSize: 14, cursor: 'pointer', transition: 'color 0.2s' }}
+                onMouseEnter={e => (e.currentTarget.style.color = WHITE)}
+                onMouseLeave={e => (e.currentTarget.style.color = MUTED)}>
+                futuremediasam313@gmail.com
+              </button>
             </div>
-            <div style={{ fontFamily: BF, color: MUTED, fontSize: 14, marginBottom: 12 }}>📍 Michigan, United States</div>
-            <div style={{ fontFamily: BF, color: MUTED, fontSize: 14, marginBottom: 20 }}>⚡ 3–5 Day Launch Guarantee</div>
+            <div style={{ fontFamily: BF, color: MUTED, fontSize: 14, marginBottom: 12 }}>Michigan, United States</div>
+            <div style={{ fontFamily: BF, color: MUTED, fontSize: 14, marginBottom: 20 }}>3 to 5 Day Launch Guarantee</div>
             <div style={{ background: `${GREEN}08`, border: `1px solid ${GREEN}20`, borderRadius: 10, padding: '12px 16px' }}>
               <div style={{ fontFamily: BF, fontSize: 11, color: '#86efac', fontWeight: 700, marginBottom: 4, textTransform: 'uppercase', letterSpacing: 1 }}>No Monthly Fees</div>
-              <div style={{ fontFamily: BF, fontSize: 12, color: MUTED }}>All packages are one-time payments. You own your site.</div>
+              <div style={{ fontFamily: BF, fontSize: 12, color: MUTED }}>All packages are one time payments. You own your site.</div>
             </div>
           </div>
         </div>
         <div style={{ borderTop: `1px solid ${BORDER2}`, paddingTop: 24, display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 12 }}>
-          <p style={{ fontFamily: BF, color: MUTED, fontSize: 13, margin: 0 }}>© 2026 Future Media Web Design Studio. All rights reserved.</p>
+          <p style={{ fontFamily: BF, color: MUTED, fontSize: 13, margin: 0 }}>2026 Future Media Web Design Studio. All rights reserved.</p>
           <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
             <Stars size={12} />
             <span style={{ fontFamily: BF, color: MUTED, fontSize: 12 }}>4.9/5 from 50+ Michigan businesses</span>
@@ -834,18 +968,18 @@ function PulseCTA() {
   return (
     <a href="#contact" style={{
       position: 'fixed', bottom: 28, right: 28, zIndex: 500,
-      background: ORANGE, color: '#fff',
+      background: BLUE, color: '#fff',
       fontFamily: BF, fontWeight: 700, fontSize: 13,
       padding: '14px 22px', borderRadius: 50,
       textDecoration: 'none', display: 'flex', alignItems: 'center', gap: 8,
-      boxShadow: `0 8px 32px ${ORANGE}50`,
+      boxShadow: `0 8px 32px ${BLUE}50`,
       transition: 'transform 0.2s, background 0.2s',
       animation: 'fade-in 0.3s ease forwards',
     }}
-      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.background = ORANGE2 }}
-      onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = ORANGE }}
+      onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.background = BLUE2 }}
+      onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = BLUE }}
       title="Get Free Mockup">
-      ⚡ Free Mockup
+      Free Mockup
     </a>
   )
 }
