@@ -22,7 +22,7 @@ const BF      = "'Outfit', sans-serif"
 const TESTIMONIALS = [
   { init: 'M', name: 'Mike T.',  biz: 'Detroit Plumbing Pro',    city: 'Detroit',         result: '12 new calls/month', text: 'Sam built us a site in one week. First month we got 12 new calls from Google alone. Paid for itself 10x over. Wish I did this years ago.' },
   { init: 'R', name: 'Rick S.',  biz: 'S&S Electric',            city: 'Sterling Heights', result: '40% more leads',     text: "I was skeptical. Now our phone hasn't stopped ringing since launch. Best investment I made all year. I've been in business 18 years." },
-  { init: 'J', name: 'Josh M.',  biz: 'Metro HVAC',              city: 'Warren',           result: '#2 Google ranking',  text: 'The free mockup sold me. No pushy sales pitch, just results. We rank #2 on Google for "HVAC Warren" now. Competitors with older sites are below us.' },
+  { init: 'J', name: 'Josh M.',  biz: 'Metro HVAC',              city: 'Warren',           result: '#2 Google ranking',  text: 'The free preview sold me. No pushy sales pitch, just results. We rank #2 on Google for "HVAC Warren" now. Competitors with older sites are below us.' },
   { init: 'D', name: 'Dave K.',  biz: 'K&K Roofing',             city: 'Livonia',          result: 'Outranking 5 yr sites', text: 'Competitors had websites for years on us. We launched 3 months ago and are already outranking them locally. Sam delivered exactly what he promised.' },
   { init: 'T', name: 'Tony B.',  biz: 'B&B Auto Repair',         city: 'Pontiac',          result: '+40% Google calls',  text: 'Google calls up 40% since launch. Customers can actually find us now. I was paying for ads that weren\'t working. This site made them irrelevant.' },
   { init: 'C', name: 'Chris R.', biz: 'Royal Oak Landscaping',   city: 'Royal Oak',        result: '15 new clients/mo',  text: 'Answered every question fast, delivered exactly what they promised. Zero BS. Real professionals. The site looks 10x better than I expected.' },
@@ -36,7 +36,7 @@ const SERVICES = [
 ]
 
 const STEPS = [
-  { n: '01', title: 'Get a Free Mockup',  desc: 'We design a real visual of your new website for free. No commitment, no credit card, no risk. You see it before paying a dollar.' },
+  { n: '01', title: 'Get a Free Preview',  desc: 'We design a real visual of your new website for free. No commitment, no credit card, no risk. You see it before paying a dollar.' },
   { n: '02', title: 'We Build It Fast',   desc: 'Once you approve, our team builds your site in 3 to 5 days. Professional, fast, and done right the first time with no cutting corners.' },
   { n: '03', title: 'Your Phone Rings',   desc: 'Your site goes live, ranks on Google, and customers start calling. That\'s the whole point, and that\'s what we deliver every time.' },
 ]
@@ -64,7 +64,7 @@ const PRICING = [
 
 const FAQS = [
   { q: 'How long does it take?',              a: 'Most websites are live in 3 to 5 days. We work fast because we know your time is money. Larger Elite projects run 7 to 10 days.' },
-  { q: 'What is this "free mockup" thing?',   a: 'Before you pay a single dollar, we build you a real visual mockup of your website. You approve it, then we build it. Zero risk. If you don\'t love it, you walk away and owe us nothing.' },
+  { q: 'What is this "free preview" thing?',   a: 'Before you pay a single dollar, we build you a real visual preview of your website. You approve it, then we build it. Zero risk. If you don\'t love it, you walk away and owe us nothing.' },
   { q: 'Do I own my website?',                a: '100% yes. You own the domain, the content, and all the code. We build it for you and hand over the keys. It\'s yours forever.' },
   { q: 'Will I rank on Google?',              a: 'That\'s the whole point. Every site we build includes local SEO so you rank when people in your city search for your service. Most clients see rankings within 30 to 60 days.' },
   { q: 'What if I\'m not tech savvy?',        a: 'Completely fine. You don\'t touch a thing. We handle all updates, hosting, and maintenance. Just reach out when you need a change.' },
@@ -254,7 +254,7 @@ function Navbar() {
         }}
           onMouseEnter={e => { e.currentTarget.style.background = BLUE2; e.currentTarget.style.transform = 'translateY(-1px)' }}
           onMouseLeave={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.transform = 'translateY(0)' }}>
-          Free Mockup
+          Free Preview
         </a>
       </div>
     </nav>
@@ -310,7 +310,7 @@ function Hero() {
               }}
                 onMouseEnter={e => { e.currentTarget.style.background = BLUE2 }}
                 onMouseLeave={e => { e.currentTarget.style.background = BLUE }}>
-                Get My FREE Mockup
+                Get My FREE Preview
               </a>
             </Magnetic>
             <Magnetic strength={0.2}>
@@ -331,7 +331,7 @@ function Hero() {
 
           {/* Trust strip */}
           <div className="fade-up" style={{ display: 'flex', gap: 20, flexWrap: 'wrap', animationDelay: '0.5s' }}>
-            {[['50+','Michigan Businesses'],['4.9 ★','Avg Rating'],['Under 5 Days','Avg Launch'],['$0','To See Your Mockup']].map(([n, l]) => (
+            {[['50+','Michigan Businesses'],['4.9 ★','Avg Rating'],['Under 5 Days','Avg Launch'],['$0','To See Your Preview']].map(([n, l]) => (
               <div key={l} style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
                 <div style={{ fontFamily: DF, fontSize: 26, fontWeight: 800, color: WHITE, lineHeight: 1 }}>{n}</div>
                 <div style={{ fontFamily: BF, fontSize: 11, color: MUTED, textTransform: 'uppercase', letterSpacing: 1.5 }}>{l}</div>
@@ -565,7 +565,7 @@ function HowItWorks() {
               }}
                 onMouseEnter={e => { e.currentTarget.style.background = BLUE2 }}
                 onMouseLeave={e => { e.currentTarget.style.background = BLUE }}>
-                Start With a Free Mockup
+                Start With a Free Preview
               </a>
             </Magnetic>
           </div>
@@ -705,7 +705,7 @@ function Pricing() {
             <h2 style={{ fontFamily: DF, fontSize: 'clamp(38px,5vw,66px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '14px 0 12px' }}>
               TRANSPARENT PRICING. NO SURPRISES.
             </h2>
-            <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16 }}>Every package starts with a free mockup. You don&apos;t pay until you love the design.</p>
+            <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16 }}>Every package starts with a free preview. You don&apos;t pay until you love the design.</p>
           </div>
         </Reveal>
 
@@ -729,11 +729,11 @@ function Pricing() {
             }}
               onMouseEnter={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.transform = 'translateY(-2px)' }}
               onMouseLeave={e => { e.currentTarget.style.background = `${BLUE}15`; e.currentTarget.style.borderColor = `${BLUE}40`; e.currentTarget.style.transform = 'translateY(0)' }}>
-              Not Sure? Get a Free Mockup First
+              Not Sure? Get a Free Preview First
             </a>
           </div>
           <p style={{ fontFamily: BF, textAlign: 'center', color: MUTED, fontSize: 14, marginTop: 20 }}>
-            Not sure which package? Start with a free mockup and we&apos;ll recommend the right fit.
+            Not sure which package? Start with a free preview and we&apos;ll recommend the right fit.
           </p>
         </Reveal>
       </div>
@@ -862,12 +862,12 @@ function Contact() {
       <div style={{ maxWidth: 640, margin: '0 auto' }}>
         <Reveal>
           <div style={{ textAlign: 'center', marginBottom: 48 }}>
-            <Tag color={GREEN}>Free Mockup. Zero Risk.</Tag>
+            <Tag color={GREEN}>Free Preview. Zero Risk.</Tag>
             <h2 style={{ fontFamily: DF, fontSize: 'clamp(40px,5.5vw,72px)', fontWeight: 900, lineHeight: 0.95, letterSpacing: '-0.5px', color: WHITE, margin: '18px 0 16px' }}>
               READY TO START GETTING MORE CUSTOMERS?
             </h2>
             <p style={{ fontFamily: BF, color: WHITE2, fontSize: 16, lineHeight: 1.8 }}>
-              Drop your info below. We&apos;ll build a real mockup of your new website completely free and reach out within 24 hours. No payment, no pressure.
+              Drop your info below. We&apos;ll build a real preview of your new website completely free and reach out within 24 hours. No payment, no pressure.
             </p>
           </div>
         </Reveal>
@@ -880,7 +880,7 @@ function Contact() {
               </div>
               <div style={{ fontFamily: DF, fontSize: 32, fontWeight: 900, color: WHITE, marginBottom: 14 }}>GOT IT!</div>
               <div style={{ fontFamily: BF, color: WHITE2, fontSize: 16, lineHeight: 1.85, maxWidth: 400, margin: '0 auto 28px' }}>
-                We&apos;ll have your free mockup ready within 24 hours. Check your phone, Sam will be in touch.
+                We&apos;ll have your free preview ready within 24 hours. Check your phone, Sam will be in touch.
               </div>
               <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: `${GREEN}10`, border: `1px solid ${GREEN}30`, borderRadius: 12, padding: '14px 24px', fontFamily: BF, fontSize: 14, color: '#86efac', fontWeight: 700 }}>
                 <span style={{ fontSize: 18 }}>✓</span> Request received, we&apos;ll be in touch soon
@@ -889,7 +889,7 @@ function Contact() {
           ) : (
             <div style={{ background: BG3, border: `1px solid ${BORDER}`, borderRadius: 16, padding: 40 }}>
               <form action="https://formspree.io/f/xgopolbd" method="POST" style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
-                <input type="hidden" name="_subject" value="New Free Mockup Request — Future Media" />
+                <input type="hidden" name="_subject" value="New Free Preview Request — Future Media" />
                 <input type="hidden" name="_next" value="https://futuremediawebdesign.com/?submitted=true" />
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(200px,1fr))', gap: 14 }}>
                   <div>
@@ -927,7 +927,7 @@ function Contact() {
                     transform: btnHov ? 'translateY(-2px)' : 'none',
                     transition: 'all 0.2s ease',
                   }}>
-                  SEND ME MY FREE MOCKUP
+                  SEND ME MY FREE PREVIEW
                 </button>
                 <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 24, marginTop: 4, flexWrap: 'wrap' }}>
                   {['No payment required', 'No spam, ever', '24 hour response'].map(t => (
@@ -999,13 +999,13 @@ function Footer() {
               <a href="#contact" style={{ display: 'inline-flex', alignItems: 'center', gap: 6, background: BLUE, color: '#fff', fontFamily: BF, fontSize: 12, fontWeight: 700, padding: '8px 14px', borderRadius: 8, textDecoration: 'none', transition: 'background 0.2s' }}
                 onMouseEnter={e => (e.currentTarget.style.background = BLUE2)}
                 onMouseLeave={e => (e.currentTarget.style.background = BLUE)}>
-                Free Mockup
+                Free Preview
               </a>
             </div>
           </div>
           <div>
             <div style={{ fontFamily: BF, color: WHITE, fontWeight: 700, fontSize: 11, marginBottom: 18, letterSpacing: 2, textTransform: 'uppercase' }}>Pages</div>
-            {[['#services','Services'],['#how','How It Works'],['#reviews','Results'],['#pricing','Pricing'],['#contact','Get Free Mockup']].map(([href, label]) => (
+            {[['#services','Services'],['#how','How It Works'],['#reviews','Results'],['#pricing','Pricing'],['#contact','Get Free Preview']].map(([href, label]) => (
               <div key={href} style={{ marginBottom: 12 }}>
                 <a href={href} style={{ fontFamily: BF, color: MUTED, fontSize: 14, textDecoration: 'none', transition: 'color 0.2s' }}
                   onMouseEnter={e => (e.currentTarget.style.color = WHITE)}
@@ -1064,8 +1064,8 @@ function PulseCTA() {
     }}
       onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.background = BLUE2 }}
       onMouseLeave={e => { e.currentTarget.style.transform = 'translateY(0)'; e.currentTarget.style.background = BLUE }}
-      title="Get Free Mockup">
-      Free Mockup
+      title="Get Free Preview">
+      Free Preview
     </a>
   )
 }

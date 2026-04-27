@@ -4,7 +4,7 @@ import { SmoothScroll } from './_components/SmoothScroll'
 
 export const metadata: Metadata = {
   title: 'Future Media | Michigan Web Design for Local Businesses',
-  description: 'Future Media builds high-converting websites for Michigan plumbers, electricians, HVAC, roofers, and local businesses. Get your FREE mockup today.',
+  description: 'Future Media builds high-converting websites for Michigan plumbers, electricians, HVAC, roofers, and local businesses. Get your FREE preview today.',
   keywords: 'web design Michigan, local business website, plumber website, electrician website, HVAC website, Michigan SEO',
   icons: {
     icon: '/logo.jpg',
@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title: 'Future Media | Michigan Web Design Studio',
-    description: 'We build websites that rank on Google and turn searchers into customers. Free mockup for Michigan businesses.',
+    description: 'We build websites that rank on Google and turn searchers into customers. Free preview for Michigan businesses.',
     type: 'website',
     url: 'https://futuremediawebdesign.com',
   },
