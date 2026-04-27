@@ -1,5 +1,6 @@
 'use client'
 import { useState, useEffect, useRef } from 'react'
+import { motion, useScroll, useTransform, useMotionValue, useSpring, type Variants } from 'framer-motion'
 
 // ─── BRAND TOKENS ─────────────────────────────────────────────────────
 const BG      = '#060810'
@@ -97,34 +98,116 @@ function SectionLabel({ children, align = 'center' }: { children: React.ReactNod
   )
 }
 
-function Reveal({ children, delay = 0, direction = 'up' }: { children: React.ReactNode; delay?: number; direction?: 'up' | 'left' | 'right' }) {
-  const ref = useRef<HTMLDivElement>(null)
-  const [visible, setVisible] = useState(false)
+// ─── MOTION PRIMITIVES (Framer-quality vocabulary) ───────────────────
+// All animations: GPU-accelerated transform + opacity ONLY. Spring physics
+// where it counts. cubic-bezier(0.22, 1, 0.36, 1) "expo-out" curve for the
+// industry-standard premium feel. prefers-reduced-motion respected.
 
-  useEffect(() => {
-    const el = ref.current
-    if (!el) return
-    const obs = new IntersectionObserver(([e]) => {
-      if (e.isIntersecting) { setVisible(true); obs.disconnect() }
-    }, { threshold: 0.1 })
-    obs.observe(el)
-    return () => obs.disconnect()
-  }, [])
+const EASE_OUT_EXPO = [0.22, 1, 0.36, 1] as const
 
-  const offsets: Record<string, string> = {
-    up: 'translateY(40px)',
-    left: 'translateX(-40px)',
-    right: 'translateX(40px)',
+function Reveal({ children, delay = 0, direction = 'up', y = 40 }: { children: React.ReactNode; delay?: number; direction?: 'up' | 'left' | 'right'; y?: number }) {
+  const initial = direction === 'up'    ? { opacity: 0, y, x: 0 }
+                : direction === 'left'  ? { opacity: 0, x: -40, y: 0 }
+                :                          { opacity: 0, x: 40, y: 0 }
+  return (
+    <motion.div
+      initial={initial}
+      whileInView={{ opacity: 1, x: 0, y: 0 }}
+      viewport={{ once: true, margin: '-80px' }}
+      transition={{ duration: 0.75, delay, ease: EASE_OUT_EXPO }}
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+// SplitWords — per-word staggered reveal for headlines.
+// Preserves inline-block layout so wrapping/sizes are unchanged.
+function SplitWords({ text, delay = 0, stagger = 0.06 }: { text: string; delay?: number; stagger?: number }) {
+  const container: Variants = {
+    hidden: {},
+    visible: { transition: { staggerChildren: stagger, delayChildren: delay } },
   }
+  const word: Variants = {
+    hidden:  { opacity: 0, y: '0.6em' },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.85, ease: EASE_OUT_EXPO } },
+  }
+  return (
+    <motion.span
+      variants={container}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: '-80px' }}
+      style={{ display: 'inline-block' }}
+    >
+      {text.split(' ').map((w, i, arr) => (
+        <span key={i} style={{ display: 'inline-block', overflow: 'hidden', paddingBottom: '0.12em', marginBottom: '-0.12em', verticalAlign: 'top' }}>
+          <motion.span variants={word} style={{ display: 'inline-block' }}>
+            {w}{i < arr.length - 1 ? ' ' : ''}
+          </motion.span>
+        </span>
+      ))}
+    </motion.span>
+  )
+}
+
+// Magnetic — wraps a CTA so the element follows the cursor with spring damping.
+// Telegraphs high-end interactivity without changing the button's look.
+function Magnetic({ children, strength = 0.3 }: { children: React.ReactNode; strength?: number }) {
+  const ref = useRef<HTMLSpanElement>(null)
+  const mx = useMotionValue(0)
+  const my = useMotionValue(0)
+  const sx = useSpring(mx, { stiffness: 150, damping: 15, mass: 0.4 })
+  const sy = useSpring(my, { stiffness: 150, damping: 15, mass: 0.4 })
 
   return (
-    <div ref={ref} style={{
-      opacity: visible ? 1 : 0,
-      transform: visible ? 'translate(0)' : offsets[direction],
-      transition: `all 0.7s cubic-bezier(0.22,1,0.36,1) ${delay}s`,
-    }}>
+    <motion.span
+      ref={ref}
+      style={{ x: sx, y: sy, display: 'inline-block' }}
+      onMouseMove={e => {
+        if (!ref.current) return
+        const r = ref.current.getBoundingClientRect()
+        mx.set((e.clientX - (r.left + r.width / 2)) * strength)
+        my.set((e.clientY - (r.top + r.height / 2)) * strength)
+      }}
+      onMouseLeave={() => { mx.set(0); my.set(0) }}
+    >
       {children}
-    </div>
+    </motion.span>
+  )
+}
+
+// StaggerGroup / StaggerItem — for cascading card grids.
+const _stgContainer: Variants = { hidden: {}, visible: { transition: { staggerChildren: 0.08 } } }
+const _stgItem:      Variants = { hidden: { opacity: 0, y: 28 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: EASE_OUT_EXPO } } }
+
+function StaggerGroup({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
+  return (
+    <motion.div variants={_stgContainer} initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} style={style}>
+      {children}
+    </motion.div>
+  )
+}
+function StaggerItem({ children, style }: { children: React.ReactNode; style?: React.CSSProperties }) {
+  return (<motion.div variants={_stgItem} style={style}>{children}</motion.div>)
+}
+
+// HoverLift — wraps cards so they lift on hover (transform-only, GPU).
+function HoverLift({ children, lift = 4 }: { children: React.ReactNode; lift?: number }) {
+  return (
+    <motion.div whileHover={{ y: -lift }} transition={{ duration: 0.4, ease: EASE_OUT_EXPO }}>
+      {children}
+    </motion.div>
+  )
+}
+
+// ParallaxY — subtle scroll-linked vertical translation. Wrap any element.
+function ParallaxY({ children, speed = 50 }: { children: React.ReactNode; speed?: number }) {
+  const ref = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] })
+  const y = useTransform(scrollYProgress, [0, 1], [0, -speed])
+  return (
+    <motion.div ref={ref} style={{ y }}>{children}</motion.div>
   )
 }
 
@@ -200,14 +283,14 @@ function Hero() {
             </span>
           </div>
 
-          <h1 className="fade-up" style={{ fontFamily: DF, fontWeight: 900, fontSize: 'clamp(54px,7.5vw,108px)', lineHeight: 0.92, letterSpacing: '-1px', color: WHITE, margin: '0 0 6px', animationDelay: '0.1s' }}>
-            YOUR COMPETITORS
+          <h1 style={{ fontFamily: DF, fontWeight: 900, fontSize: 'clamp(54px,7.5vw,108px)', lineHeight: 0.92, letterSpacing: '-1px', color: WHITE, margin: '0 0 6px' }}>
+            <SplitWords text="YOUR COMPETITORS" delay={0.1} />
           </h1>
-          <h1 className="fade-up" style={{ fontFamily: DF, fontWeight: 900, fontSize: 'clamp(54px,7.5vw,108px)', lineHeight: 0.92, letterSpacing: '-1px', color: WHITE, margin: '0 0 6px', animationDelay: '0.15s' }}>
-            ARE STEALING
+          <h1 style={{ fontFamily: DF, fontWeight: 900, fontSize: 'clamp(54px,7.5vw,108px)', lineHeight: 0.92, letterSpacing: '-1px', color: WHITE, margin: '0 0 6px' }}>
+            <SplitWords text="ARE STEALING" delay={0.25} />
           </h1>
-          <h1 className="fade-up" style={{ fontFamily: DF, fontWeight: 900, fontSize: 'clamp(54px,7.5vw,108px)', lineHeight: 0.92, letterSpacing: '-1px', color: BLUE, margin: '0 0 32px', animationDelay: '0.2s' }}>
-            YOUR CUSTOMERS.
+          <h1 style={{ fontFamily: DF, fontWeight: 900, fontSize: 'clamp(54px,7.5vw,108px)', lineHeight: 0.92, letterSpacing: '-1px', color: BLUE, margin: '0 0 32px' }}>
+            <SplitWords text="YOUR CUSTOMERS." delay={0.4} />
           </h1>
 
           <p className="fade-up" style={{ fontFamily: BF, fontSize: 'clamp(15px,1.6vw,18px)', color: WHITE2, maxWidth: 560, lineHeight: 1.8, margin: '0 0 40px', animationDelay: '0.3s' }}>
@@ -216,29 +299,34 @@ function Hero() {
           </p>
 
           <div className="fade-up" style={{ display: 'flex', gap: 14, flexWrap: 'wrap', marginBottom: 52, animationDelay: '0.4s' }}>
-            <a href="#contact" style={{
-              fontFamily: BF, fontWeight: 700, fontSize: 16,
-              background: BLUE, color: '#fff',
-              padding: '18px 36px', borderRadius: 10,
-              textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 10,
-              boxShadow: `0 8px 32px ${BLUE}40`,
-              transition: 'all 0.2s',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.background = BLUE2; e.currentTarget.style.transform = 'translateY(-2px)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.transform = 'translateY(0)' }}>
-              Get My FREE Mockup
-            </a>
-            <a href="#pricing" className="btn-glow" style={{
-              fontFamily: BF, fontWeight: 700, fontSize: 15,
-              background: `${BLUE}18`, color: WHITE,
-              padding: '18px 30px', borderRadius: 10,
-              textDecoration: 'none', border: `1px solid ${BLUE}50`,
-              transition: 'all 0.2s',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.borderColor = BLUE; e.currentTarget.style.transform = 'translateY(-2px)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = `${BLUE}18`; e.currentTarget.style.borderColor = `${BLUE}50`; e.currentTarget.style.transform = 'translateY(0)' }}>
-              View Packages
-            </a>
+            <Magnetic strength={0.25}>
+              <a href="#contact" style={{
+                fontFamily: BF, fontWeight: 700, fontSize: 16,
+                background: BLUE, color: '#fff',
+                padding: '18px 36px', borderRadius: 10,
+                textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: 10,
+                boxShadow: `0 8px 32px ${BLUE}40`,
+                transition: 'background 0.2s',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.background = BLUE2 }}
+                onMouseLeave={e => { e.currentTarget.style.background = BLUE }}>
+                Get My FREE Mockup
+              </a>
+            </Magnetic>
+            <Magnetic strength={0.2}>
+              <a href="#pricing" className="btn-glow" style={{
+                fontFamily: BF, fontWeight: 700, fontSize: 15,
+                background: `${BLUE}18`, color: WHITE,
+                padding: '18px 30px', borderRadius: 10,
+                textDecoration: 'none', border: `1px solid ${BLUE}50`,
+                transition: 'background 0.2s, border-color 0.2s',
+                display: 'inline-block',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.borderColor = BLUE }}
+                onMouseLeave={e => { e.currentTarget.style.background = `${BLUE}18`; e.currentTarget.style.borderColor = `${BLUE}50` }}>
+                View Packages
+              </a>
+            </Magnetic>
           </div>
 
           {/* Trust strip */}
@@ -467,17 +555,19 @@ function HowItWorks() {
         </div>
         <Reveal delay={0.3}>
           <div style={{ textAlign: 'center', marginTop: 44 }}>
-            <a href="#contact" style={{
-              fontFamily: BF, fontWeight: 700, fontSize: 16,
-              background: BLUE, color: '#fff',
-              padding: '18px 40px', borderRadius: 10,
-              textDecoration: 'none', display: 'inline-block',
-              transition: 'all 0.2s',
-            }}
-              onMouseEnter={e => { e.currentTarget.style.background = BLUE2; e.currentTarget.style.transform = 'translateY(-2px)' }}
-              onMouseLeave={e => { e.currentTarget.style.background = BLUE; e.currentTarget.style.transform = 'translateY(0)' }}>
-              Start With a Free Mockup
-            </a>
+            <Magnetic strength={0.25}>
+              <a href="#contact" style={{
+                fontFamily: BF, fontWeight: 700, fontSize: 16,
+                background: BLUE, color: '#fff',
+                padding: '18px 40px', borderRadius: 10,
+                textDecoration: 'none', display: 'inline-block',
+                transition: 'background 0.2s',
+              }}
+                onMouseEnter={e => { e.currentTarget.style.background = BLUE2 }}
+                onMouseLeave={e => { e.currentTarget.style.background = BLUE }}>
+                Start With a Free Mockup
+              </a>
+            </Magnetic>
           </div>
         </Reveal>
       </div>
@@ -683,18 +773,20 @@ function PricingCard({ p }: { p: typeof PRICING[0] }) {
           </li>
         ))}
       </ul>
-      <a href={p.stripe} target="_blank" rel="noopener noreferrer" style={{
-        display: 'block', textAlign: 'center', padding: '15px',
-        borderRadius: 10, fontFamily: BF, fontWeight: 700, fontSize: 15, textDecoration: 'none',
-        background: p.hot ? BLUE : `${BLUE}15`,
-        color: '#fff',
-        border: p.hot ? 'none' : `1px solid ${BLUE}40`,
-        transition: 'all 0.2s',
-      }}
-        onMouseEnter={e => { e.currentTarget.style.background = p.hot ? BLUE2 : BLUE; e.currentTarget.style.transform = 'translateY(-1px)' }}
-        onMouseLeave={e => { e.currentTarget.style.background = p.hot ? BLUE : `${BLUE}15`; e.currentTarget.style.transform = 'translateY(0)' }}>
-        Buy Now
-      </a>
+      <Magnetic strength={0.18}>
+        <a href={p.stripe} target="_blank" rel="noopener noreferrer" style={{
+          display: 'block', textAlign: 'center', padding: '15px',
+          borderRadius: 10, fontFamily: BF, fontWeight: 700, fontSize: 15, textDecoration: 'none',
+          background: p.hot ? BLUE : `${BLUE}15`,
+          color: '#fff',
+          border: p.hot ? 'none' : `1px solid ${BLUE}40`,
+          transition: 'background 0.2s, border-color 0.2s',
+        }}
+          onMouseEnter={e => { e.currentTarget.style.background = p.hot ? BLUE2 : BLUE }}
+          onMouseLeave={e => { e.currentTarget.style.background = p.hot ? BLUE : `${BLUE}15` }}>
+          Buy Now
+        </a>
+      </Magnetic>
     </div>
   )
 }
