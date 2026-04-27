@@ -1,127 +1,203 @@
+@import "tailwindcss";
+
+/* ═══════════════════════════════════════════════════════════════════
+   FUTURE MEDIA — DESIGN TOKENS (Claude aesthetic × Framer motion)
+   Warm restraint. Editorial pacing. Premium polish.
+   ═══════════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* COLORS — extracted from Anthropic's Claude visual identity */
+  --color-bg:           #faf9f5;   /* warm off-white — page background */
+  --color-bg-2:         #f5f4ed;   /* surface — cards, sidebars */
+  --color-bg-3:         #efece2;   /* deeper surface — hover states */
+  --color-ink:          #1f1d1a;   /* primary text — warm charcoal */
+  --color-ink-2:        #2c2c2c;   /* heavy headline ink */
+  --color-ink-muted:    #6b6963;   /* secondary text — warm grey */
+  --color-ink-faint:    #a8a59c;   /* tertiary text — captions */
+  --color-accent:       #C15F3C;   /* Claude rust-orange — CTAs, hovers */
+  --color-accent-dark:  #A14A2F;   /* pressed state */
+  --color-accent-soft:  rgba(193, 95, 60, 0.08);  /* tinted backgrounds */
+  --color-border:       #e8e5dd;   /* subtle warm divider */
+  --color-border-2:     #ddd9cd;   /* stronger divider */
+  --color-success:      #6a8e5a;   /* muted forest green */
+
+  /* TYPOGRAPHY */
+  --font-display: 'Fraunces', 'Tiempos Headline', Georgia, serif;
+  --font-body:    'Geist', 'Söhne', 'Inter Tight', system-ui, sans-serif;
+  --font-mono:    'Geist Mono', 'JetBrains Mono', monospace;
+
+  /* SPACING — generous editorial rhythm */
+  --section-y:    clamp(80px, 14vw, 200px);
+  --container-x:  clamp(20px, 5vw, 64px);
+
+  /* RADII */
+  --r-sm: 6px;
+  --r-md: 12px;
+  --r-lg: 20px;
+  --r-xl: 32px;
+
+  /* MOTION — the cubic-bezier "expo out" curve is the secret to premium feel */
+  --ease-out:    cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --t-fast:   200ms;
+  --t-mid:    400ms;
+  --t-slow:   700ms;
+}
+
+/* ─── RESET ────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
+html { scroll-behavior: auto; }   /* Lenis handles smooth scroll, not native */
 body {
-  font-family: 'Outfit', system-ui, sans-serif;
-  background: #060810;
-  color: #eef0ff;
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
+  font-feature-settings: "ss01", "cv11";   /* nicer Geist defaults */
 }
-
 input, textarea, button, select { font-family: inherit; }
-a { transition: opacity 0.15s; }
+button { background: none; border: none; color: inherit; cursor: pointer; }
+a { color: inherit; text-decoration: none; }
 
-/* ── KEYFRAMES ─────────────────────────────────────────── */
-
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(32px); }
-  to   { opacity: 1; transform: translateY(0); }
+/* ─── DISPLAY TYPE — Fraunces with optical sizing ─────────────────── */
+.display {
+  font-family: var(--font-display);
+  font-weight: 460;
+  letter-spacing: -0.02em;
+  line-height: 1.04;
+  font-variation-settings: "opsz" 144, "SOFT" 30;
+}
+.display-italic {
+  font-style: italic;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
 }
 
-@keyframes fade-in {
-  from { opacity: 0; }
-  to   { opacity: 1; }
+/* ─── BODY SCALE ──────────────────────────────────────────────────── */
+.body-lg  { font-size: 1.25rem; line-height: 1.55; color: var(--color-ink-muted); }
+.body-md  { font-size: 1.0625rem; line-height: 1.6; color: var(--color-ink-muted); }
+.body-sm  { font-size: 0.9375rem; line-height: 1.55; color: var(--color-ink-muted); }
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-ink-muted);
 }
 
-@keyframes slide-right {
-  from { opacity: 0; transform: translateX(-24px); }
-  to   { opacity: 1; transform: translateX(0); }
+/* ─── LAYOUT ──────────────────────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-inline: var(--container-x);
+}
+.section { padding-block: var(--section-y); }
+
+/* ─── BUTTON SYSTEM ──────────────────────────────────────────────── */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: var(--color-ink);
+  color: var(--color-bg);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  transition: background var(--t-fast) var(--ease-out),
+              transform var(--t-fast) var(--ease-out);
+}
+.btn-primary:hover  { background: var(--color-accent); }
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--color-ink);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  border: 1px solid var(--color-border-2);
+  transition: background var(--t-fast) var(--ease-out),
+              border-color var(--t-fast) var(--ease-out);
+}
+.btn-secondary:hover { background: var(--color-bg-2); border-color: var(--color-ink-muted); }
+
+.btn-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 22px;
+  border-radius: 999px;
+  background: var(--color-accent);
+  color: white;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  transition: background var(--t-fast) var(--ease-out),
+              transform var(--t-fast) var(--ease-out);
+}
+.btn-accent:hover  { background: var(--color-accent-dark); }
+.btn-accent:active { transform: scale(0.97); }
+
+/* ─── CARD ───────────────────────────────────────────────────────── */
+.card {
+  background: var(--color-bg-2);
+  border: 1px solid var(--color-border);
+  border-radius: var(--r-lg);
+  padding: 28px;
+  transition: transform var(--t-mid) var(--ease-out),
+              box-shadow var(--t-mid) var(--ease-out),
+              border-color var(--t-mid) var(--ease-out);
+}
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 50px -20px rgba(31, 29, 26, 0.15);
+  border-color: var(--color-border-2);
 }
 
-@keyframes live-blink {
-  0%, 100% { opacity: 1; }
-  50%       { opacity: 0.25; }
+/* ─── DIVIDERS ───────────────────────────────────────────────────── */
+.h-rule {
+  border: none;
+  height: 1px;
+  background: var(--color-border);
 }
 
+/* ─── MARQUEE ────────────────────────────────────────────────────── */
 @keyframes marquee {
   0%   { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
-@keyframes count-up {
-  from { opacity: 0; transform: translateY(16px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes border-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(0,80,255,0); }
-  50%       { box-shadow: 0 0 0 6px rgba(0,80,255,0.12); }
-}
-
-@keyframes shimmer-line {
-  0%   { transform: translateX(-100%); }
-  100% { transform: translateX(300%); }
-}
-
-@keyframes btn-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(0,80,255,0.25), 0 0 40px rgba(0,80,255,0.08); }
-  50%      { box-shadow: 0 0 30px rgba(0,80,255,0.45), 0 0 60px rgba(0,80,255,0.15); }
-}
-
-/* ── UTILITY CLASSES ───────────────────────────────────── */
-
-.fade-up {
-  animation: fade-up 0.75s cubic-bezier(0.22,1,0.36,1) forwards;
-  opacity: 0;
-}
-
-.fade-in  { animation: fade-in 0.6s ease forwards; }
-.slide-right { animation: slide-right 0.65s cubic-bezier(0.22,1,0.36,1) forwards; opacity: 0; }
-
-.btn-glow {
-  animation: btn-glow 2.5s ease-in-out infinite;
-}
-
-/* ── MARQUEE ───────────────────────────────────────────── */
 .marquee-track {
   display: flex;
   width: max-content;
-  animation: marquee 30s linear infinite;
+  animation: marquee 40s linear infinite;
 }
 .marquee-track:hover { animation-play-state: paused; }
 
-/* ── DOT GRID BACKGROUND ───────────────────────────────── */
-.dot-grid {
-  background-image: radial-gradient(rgba(0,80,255,0.18) 1px, transparent 1px);
-  background-size: 32px 32px;
+/* ─── SCROLLBAR ──────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-2);
+  border-radius: 999px;
 }
+::-webkit-scrollbar-thumb:hover { background: var(--color-ink-muted); }
 
-/* ── HARD LINE DIVIDERS ────────────────────────────────── */
-.h-rule {
-  border: none;
-  border-top: 1px solid rgba(255,255,255,0.07);
-  margin: 0;
+/* ─── SELECTION ──────────────────────────────────────────────────── */
+::selection { background: rgba(193, 95, 60, 0.2); color: var(--color-ink); }
+
+/* ─── REDUCED MOTION ─────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
-
-/* ── MOBILE ────────────────────────────────────────────── */
-@media (max-width: 640px) {
-  .hide-mobile { display: none !important; }
-  .stack-mobile { flex-direction: column !important; }
-  .full-mobile  { width: 100% !important; }
-}
-@media (max-width: 900px) {
-  .hide-tablet { display: none !important; }
-}
-
-/* ── SCROLLBAR ─────────────────────────────────────────── */
-::-webkit-scrollbar { width: 4px; }
-::-webkit-scrollbar-track { background: #060810; }
-::-webkit-scrollbar-thumb { background: #0050FF; border-radius: 2px; }
-
-/* ── INPUTS ────────────────────────────────────────────── */
-input::placeholder, textarea::placeholder { color: #2e3150; }
-input:focus, textarea:focus, select:focus {
-  outline: none;
-  border-color: rgba(0,80,255,0.5) !important;
-  box-shadow: 0 0 0 3px rgba(0,80,255,0.1);
-}
-
-/* ── SELECTION ─────────────────────────────────────────── */
-::selection { background: rgba(0,80,255,0.25); color: #fff; }
-
-/* ── SCORE BARS ────────────────────────────────────────── */
-.score-bar-bg   { background: #0e1020; border-radius: 100px; overflow: hidden; height: 6px; }
-.score-bar-fill { height: 100%; border-radius: 100px; transition: width 0.4s ease; }
